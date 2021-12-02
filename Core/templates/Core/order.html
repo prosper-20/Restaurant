@@ -1,4 +1,4 @@
-{% extends 'customer/base.html' %}
+{% extends 'Core/base.html' %}
 
 {% block content %}
 <div class="container mb-5">
@@ -152,31 +152,3 @@
 {% endblock content %}
  
 
-In this file, we are looping through each category and listing out each menu item in the database.  We are creating a checkbox to allow the user to select the items they want to purchase.  In each checkbox there are two important additions.  There is a name set as "items[]" for each of the items there is also a value that is set to that item's primary key.  When we grab the selected we are going to find them by using the name using the getlist function in our views and it will return a list of the values of the selected items, which in this case is the primary keys.  Finally, there is a button at the bottom that submits the form as a post request.
-
-Now let's build the order confirmation after they place an order.
-
-{% extends 'customer/base.html' %}
-
-{% block content %}
-<div class="container mb-5">
-    <div class="row justify-content-center mt-1">
-        <div class="col-md-5 col-sm-12 p-4 text-center">
-            <h1>Order Submitted!</h1>
-            <p>You should receive a confirmation email soon.</p>
-            <a href="{% url 'index' %}">Go to the homepage</a>
-        </div>
-    </div>
-
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-5 col-sm-12 text-center">
-            <h3 class="pb-3">Order Summary:</h3>
-            {% for item in items %}
-                <p>{{ item.name }} <span class="pl-3">{{ item.price }}</span></p>
-            {% endfor %}
-
-            <p class="font-weight-bold pt-4">Total: {{ price }}</p>
-        </div>
-    </div>
-</div>
-{% endblock content %}
