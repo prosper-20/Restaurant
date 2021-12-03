@@ -1,14 +1,7 @@
-
-from django.shortcuts import render, redirect
-from django.views import View
-from Core.models import OrderModel
-from django.utils.timezone import datetime
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from customer.models import OrderModel
+from Core.models import OrderModel
 from django.utils.timezone import datetime
 
 class Dashboard(LoginRequiredMixin, UserPassesTestMixin, View):
