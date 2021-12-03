@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import MenuItem, OrderModel
 from django.core.mail import send_mail
+from django.utils.timezone import datetime
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import json
 
 class Index(View):
@@ -147,4 +149,7 @@ class OrderConfirmation(View):
 class OrderPayConfirmation(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'Core/order_pay_confirmation.html')
+
+
+
 
