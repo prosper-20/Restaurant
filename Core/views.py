@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.utils.timezone import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import json
+from django.db.models import Q
 
 class Index(View):
     def get(self, request, *args, **kwargs):
@@ -160,6 +161,31 @@ class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
 
     def test_func(self):
         return self.request.user.groups.filter(name='Staff').exists()
+
+class Menu(View):
+    def get(self, request, *args, **kwargs):
+        menu_items = MenuItem.objects.all()
+
+        context = {
+            'menu_items': menu_items,
+        }
+
+        return render(request, 'Core/menu-html', context)
+
+class MenuSearch(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get("q")
+
+        menu_items = MenuItem.objects.filter(
+            Q(name__icontains=query) |
+            Q(price__icontains=query) |
+            Q(description__icontains=query)
+        )
+
+        context = {
+            'menu_items': menu_items
+        }
+        return render(request, 'Core/menu-html', context)
 
 
 
