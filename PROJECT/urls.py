@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+from Core.views import Menu, MenuSearch
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("Core.urls")),
     path('accounts/', include('allauth.urls')),
     path("restaurant/", include('restaurant.urls')),
+    path('menu/', Menu.as_view(), name='menu'),
+    path('menu/search/', MenuSearch.as_view(), name='menu-search'),
 ]
 
 if settings.DEBUG:
