@@ -13,7 +13,7 @@ class Index(View):
 
 # YOU JUST CREATED THIS VIEW IN ORDER TO SEE THE BURGER SITE
 def new_home(request):
-    pass
+    return render(request, 'restaurant/index.html')
 
 
 class About(View):
