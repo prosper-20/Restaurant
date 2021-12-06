@@ -11,6 +11,11 @@ class Index(View):
     def get(self, request, *args, **kwargs):
         return render(request, "Core/index.html")
 
+# YOU JUST CREATED THIS VIEW IN ORDER TO SEE THE BURGER SITE
+def new_home(request):
+    pass
+
+
 class About(View):
     def get(self, request, *args, **kwargs):
         return render(request, "Core/About.html")
