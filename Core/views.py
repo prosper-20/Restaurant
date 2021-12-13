@@ -15,6 +15,9 @@ class Index(View):
 def new_home(request):
     return render(request, 'restaurant/index.html')
 
+def clone_new_home(request):
+    return render(request, 'restaurant/index_clone.html')
+
 
 class About(View):
     def get(self, request, *args, **kwargs):
