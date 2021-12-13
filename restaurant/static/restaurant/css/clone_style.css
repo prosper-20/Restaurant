@@ -20,14 +20,14 @@ h6 {
 a {
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
-    color: #fbaf32;
+    color: darkblue;
     transition: .3s;
 }
 
 a:hover,
 a:active,
 a:focus {
-    color: #719a0a;
+    color: yellow;
     outline: none;
     text-decoration: none;
 }
@@ -81,7 +81,7 @@ a:focus {
 }
 
 .back-to-top:hover {
-    background: #719a0a;
+    background: darkblue;
 }
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
@@ -119,7 +119,7 @@ a:focus {
 }
 
 .navbar .navbar-brand span {
-    color: #719a0a;
+    color: darkblue;
 }
 
 .navbar .navbar-brand:hover {
