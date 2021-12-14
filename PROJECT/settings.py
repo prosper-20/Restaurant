@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'crispy_forms',
     'restaurant',
+    'users.apps.UsersConfig',
 ]
 
 ACCOUNT_ADAPTER = 'restaurant.account_adapter.NoNewUsersAccountAdapter'
