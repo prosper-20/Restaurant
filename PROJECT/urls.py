@@ -18,6 +18,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from Core.views import Menu, MenuSearch
+from users import views as user_views
+from users.views import register
+
 
 
 urlpatterns = [
@@ -27,6 +30,7 @@ urlpatterns = [
     path("restaurant/", include('restaurant.urls')),
     path('menu/', Menu.as_view(), name='menu'),
     path('menu/search/', MenuSearch.as_view(), name='menu-search'),
+    path('register/', include("users.urls"))
 ]
 
 if settings.DEBUG:
