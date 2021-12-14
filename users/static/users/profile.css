@@ -33,3 +33,10 @@ header,
   margin-top: 0px;
   padding-top: 0px;
 }
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}

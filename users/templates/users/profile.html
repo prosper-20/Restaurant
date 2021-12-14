@@ -14,8 +14,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'blog/carousel_css/mdb.min.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'profile/new_css.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'blog/carousel_css/mdb.min.css' %}" /> -->
+
+<link rel="stylesheet" type="text/css" href="{% static 'users/profile.css' %}">
 <!-- <link rel="stylesheet" href="{% static 'blog/carousel_css/mdb.min.css' %}" /> -->
   
   <!-- Main Navigation -->
@@ -62,7 +63,7 @@
             <div class="col-md-12 mb-3">
               <div class="intro-info-content text-center">
                 <h1 class="display-3 blue-text mb-5 wow fadeInDown" data-wow-delay="0.3s">ABOUT
-                  <a class="blue-text font-weight-bold">ME</a>
+                  <a class="blue-text font-weight-bold">{{ user.username.upper}}</a>
                 </h1>
                 <h5 class="text-uppercase blue-text mb-5 mt-1 font-weight-bold wow fadeInDown" data-wow-delay="0.3s">Lorem ipsum dolor sit amet</h5>
               </div>
@@ -90,25 +91,20 @@
           <div class="col-md-12 mb-4" style="margin-top: -100px;">
 
             <div class="avatar mx-auto">
-              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="img-fluid rounded-circle z-depth-1" alt="First sample avatar image">
+              <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="img-fluid rounded-circle z-depth-1" alt="First sample avatar image"> -->
+              <img src="{{ user.profile.image.url }}" class="account-img rounded-circle z-depth-1" alt="First sample avatar image">
             </div>
             <h3 class="my-3 font-weight-bold">
-              <strong>Anna Deynah</strong>
+              <strong>{{user.username}}</strong>
             </h3>
-            <h6 class="font-weight-bold teal-text mb-4">Web Designer</h6>
+            <h6 class="font-weight-bold teal-text mb-4">Lovely Customer</h6>
 
-            <!--Facebook-->
-            <a class="p-2 m-2 fa-lg fb-ic">
-              <i class="fab fa-facebook-f grey-text"> </i>
+           
+            <!--Button-->
+            <a class="btn btn-outlie-info">
+              <a href="{% url 'profile_edit' %}"><i class="fas fa-pen-fancy"></i>Edit Profile</a>
             </a>
-            <!--Twitter-->
-            <a class="p-2 m-2 fa-lg tw-ic">
-              <i class="fab fa-twitter grey-text"> </i>
-            </a>
-            <!--Instagram-->
-            <a class="p-2 m-2 fa-lg ins-ic">
-              <i class="fab fa-instagram grey-text"> </i>
-            </a>
+            
 
             <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
