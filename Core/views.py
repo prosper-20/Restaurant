@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import MenuItem, OrderModel
@@ -6,6 +7,9 @@ from django.utils.timezone import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import json
 from django.db.models import Q
+
+def home_page(request):
+    return render(request, 'Core/home-page.html')
 
 class Index(View):
     def get(self, request, *args, **kwargs):
