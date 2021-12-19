@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from Core.views import Menu, MenuSearch
+from Core import views
+from Core.views import Menu, MenuSearch,home_page
 from users import views as user_views
 from users.views import register, profile_edit
 from django.contrib.auth.views import LoginView, LogoutView
@@ -28,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("Core.urls")),
     path('accounts/', include('allauth.urls')),
+    path('home-page/', views.home_page, name="home_page"),
     path("restaurant/", include('restaurant.urls')),
     path('menu/', Menu.as_view(), name='menu'),
     path('menu/search/', MenuSearch.as_view(), name='menu-search'),
