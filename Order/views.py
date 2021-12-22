@@ -9,4 +9,4 @@ def item_list(request):
         'items': items
     }
 
-    return render(request, "Order/item_list.html", context)
+    return render(request, "Order/home.html", context)
