@@ -9,4 +9,7 @@ def item_list(request):
         'items': items
     }
 
-    return render(request, "Order/home.html", context)
+    return render(request, "Order/new_home_page.html", context)
+
+def checkout(request):
+    return render(request, "Order/checkout-page.html")
