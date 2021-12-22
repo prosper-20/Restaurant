@@ -19,6 +19,7 @@
 
 <body>
 
+
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
@@ -147,6 +148,10 @@
 
             </form> -->
             <a class="btn btn-primary btn-md my-0 p" href="{{ object.get_add_to_cart_url }}" type="submit">Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+
+            <a class="btn btn-danger btn-md my-0 p" href="{{ object.get_remove_from_cart_url }}" type="submit">Remove from Cart
               <i class="fas fa-shopping-cart ml-1"></i>
             </a>
 
