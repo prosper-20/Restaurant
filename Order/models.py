@@ -1,13 +1,33 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
+CATEGORY_CHOICES = (
+    ('S', 'Shirt'),
+    ('SW', 'Sports Wear'),
+    ('OW', 'OutWear'),
+)
+
+LABEL_CHOICES = (
+    ('P', 'Primary'),
+    ('S', 'Secondary'),
+    ('D', 'Danger')
+)
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
+    category = models.CharField(CATEGORY_CHOICES, max_length=2)
+    label =  models.CharField(CATEGORY_CHOICES, max_length=1)
+    slug = models.SlugField()
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("product", kwargs={
+            'slug': self.slug
+        })
 
 
 class OrderItem(models.Model):
