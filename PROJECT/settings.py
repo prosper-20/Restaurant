@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'crispy_forms',
     'restaurant',
+    'Order',
     'users.apps.UsersConfig',
 ]
 
