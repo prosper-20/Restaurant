@@ -6,11 +6,13 @@ from django.views.generic import ListView, DetailView
 
 class HomeView(ListView):
     model = Item
+    context_object_name = "items"
     template_name = 'Order/new_home_page.html'
 
 class ItemDetailView(DetailView):
     model = Item
     template_name = 'Order/product-page.html'
+
 
 def item_list(request):
     items = Item.objects.all()
