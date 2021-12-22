@@ -13,3 +13,6 @@ def item_list(request):
 
 def checkout(request):
     return render(request, "Order/checkout-page.html")
+
+def product(request):
+    return render(request, "Order/product-page.html")
