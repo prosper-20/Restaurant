@@ -4,8 +4,7 @@ from django.shortcuts import redirect, reverse, render, get_object_or_404
 from .models import Item, OrderItem, Order
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
-import cart_template_tags
-from cart_templates_tags import cart_item_count
+
 
 class HomeView(ListView):
     model = Item
