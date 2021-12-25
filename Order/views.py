@@ -9,7 +9,7 @@ class HomeView(ListView):
     model = Item
     context_object_name = "items"
     template_name = 'Order/new_home_page.html'
-    paginate_by = 4
+    paginate_by = 1
 
 class ItemDetailView(DetailView):
     model = Item
