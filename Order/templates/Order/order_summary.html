@@ -148,11 +148,12 @@
                     <th scope="col">Total</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody></tbody>
+            {% for order_item in object.items.all %}
                 <tr>
-                    <th scope="col">Cell</th>
-                    <th scope="col">Cell</th>
-                    <th scope="col">Cell</th>
+                    <th scope="col">{{ order_item.item.title }}</th>
+                    <th scope="col">{{ order_item.item.price }}</th>
+                    <th scope="col">{{ order_item.quantity }}</th>
                     <th scope="col">Cell</th>
                     <th scope="col">Cell</th>
                 </tr>  

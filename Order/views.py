@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, reverse, render, get_object_or_404
 from .models import Item, OrderItem, Order
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class HomeView(ListView):
     model = Item
@@ -13,17 +15,25 @@ class HomeView(ListView):
     template_name = 'Order/today_home_page.html'
     paginate_by = 10
 
-
-class OrderSummaryView(View):
+@login_required
+class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
-        return render(self.request, 'Order/order_summary.html')
 
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            return render(self.request, 'Order/order_summary.html')
+
+        except ObjectDoesNotExist:
+            messages.error(self.request, "You do not have an active order")
+            return redirect("/")
+        
 
 
 class ItemDetailView(DetailView):
     model = Item
     template_name = 'Order/product-page.html'
 
+@login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
     order_item, created = OrderItem.objects.get_or_create(
@@ -50,6 +60,7 @@ def add_to_cart(request, slug):
         messages.info(request, "This item was added to your cart")
         return redirect('product', slug=slug)
 
+@login_required
 def remove_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(
