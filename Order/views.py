@@ -4,13 +4,21 @@ from django.shortcuts import redirect, reverse, render, get_object_or_404
 from .models import Item, OrderItem, Order
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
+from django.views.generic import View
 
 
 class HomeView(ListView):
     model = Item
     context_object_name = "items"
     template_name = 'Order/today_home_page.html'
-    paginate_by = 1
+    paginate_by = 10
+
+
+class OrderSummaryView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, 'Order/order_summary.html')
+
+
 
 class ItemDetailView(DetailView):
     model = Item
