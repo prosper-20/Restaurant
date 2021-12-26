@@ -15,13 +15,15 @@ class HomeView(ListView):
     template_name = 'Order/today_home_page.html'
     paginate_by = 10
 
-@login_required
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
 
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
-            return render(self.request, 'Order/order_summary.html')
+            context = {
+                "object": order,
+            }
+            return render(self.request, 'Order/order_summary.html', context)
 
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
