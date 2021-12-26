@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load cart_template_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +10,9 @@
   {% block extra_head %}
   {% endblock %}
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
-  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Order/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Order/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Order/css/style.min.css' %}" rel="stylesheet">
   <style type="text/css">
     html,
     body,
@@ -43,12 +43,70 @@
 
   </style>
 </head>
-
-{% include "navbar.html" %}
-
 <body>
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
 
-    <div class="mt-5 pt-4">
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="{% url 'item_list' %}" target="_self">
+        <strong class="blue-text">P's Shop</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <!-- <li class="nav-item active">
+            <a class="nav-link waves-effect" href="{% url 'item_list' %}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>-->
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> {{request.user|cart_item_count}}</span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
+              <span class="clearfix d-none d-sm-inline-block">Logout</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+              <span class="clearfix d-none d-sm-inline-block"> Login</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="">
+              <span class="clearfix d-none d-sm-inline-block">Sign Up</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+    <div class="mt-5 pt-5">
     {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
