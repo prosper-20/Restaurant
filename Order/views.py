@@ -105,6 +105,7 @@ def remove_single_item_from_cart(request, slug):
                 user=request.user,
                 ordered=False
             )[0]
+            # This is so the order will be delted once the item no. is zero
             if order_item.quantity > 1:
                 order_item.quantity -= 1
                 order_item.save()
