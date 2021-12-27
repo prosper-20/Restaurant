@@ -6,6 +6,7 @@ from .models import Item, OrderItem, Order
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
+from .forms import CheckoutForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -126,3 +127,17 @@ def remove_single_item_from_cart(request, slug):
 
 def product(request):
     return render(request, "Order/product-page.html")
+
+
+class CheckoutView(View):
+    def get(self, *args, **kwargs):
+        form = CheckoutForm
+        context = {
+            "form": form
+        }
+        return render(self.request, "Order/checkout-page.html", context)
+    def post(self, *args, **kwargs):
+        form = CheckoutForm(self.request.POST or None)
+        if form.is_valid():
+            print("The form is valid")
+            return redirect('checkout')
