@@ -65,6 +65,7 @@ class OrderItem(models.Model):
     def get_amount_saved(self):
         return self.get_total_item_price() - self.get_total_discount_price()
 
+    #Gets the final price of the order
     def get_final_price(self):
         if self.item.discount_price:
             return self.get_total_discount_price()
