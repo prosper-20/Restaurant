@@ -16,7 +16,7 @@
   <!-- Material Design Bootstrap -->
   <link href="{% static 'Order/css/mdb.min.css' %}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
-  <link href="{% static 'Order/css/style.min.css' %]" rel="stylesheet">
+  <link href="{% static 'Order/css/style.min.css' %}" rel="stylesheet">
 </head>
 
 <body class="grey lighten-3">
@@ -106,12 +106,6 @@
           <!--Card-->
           <div class="card">
 
-            <form>
-              {% csrf_token %}
-              {{ form|crispy }}
-              <button class="btn btn-primary" type="submit">Checkout</button>
-            </form>
-
             <!--Card content-->
             <form class="card-body">
               
@@ -169,13 +163,11 @@
               <hr>
 
               <div class="custom-control custom-checkbox">
-                <!-- <input type="checkbox" class="custom-control-input" id="same-address"> -->
-                {{ form.same_billing_address }}
+                <input {% if form.same_billing_address.value %}checked {% endif %} type="checkbox" class="custom-control-input" name="same_billing_address" id="same-address">
                 <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
               </div>
               <div class="custom-control custom-checkbox">
-                <!-- <input type="checkbox" class="custom-control-input" id="save-info"> -->
-                {{ form.save_info }}
+                <input {% if form.save_info.value %} checked {% endif %} type="checkbox" class="custom-control-input" name="save_info" id="save-info">
                 <label class="custom-control-label" for="save-info">Save this information for next time</label>
               </div>
 
@@ -184,7 +176,7 @@
               <div class="d-block my-3">
               {% for value, text in form.fields.payment_option.choices %}
                 <div class="custom-control custom-radio">
-                  <input id="{{ name }}" name="{{ name }}" type="radio" class="custom-control-input"required>
+                  <input id="{{ name }}" name="{{name}}" type="radio" class="custom-control-input"required>
                   <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
                 </div>
               {% endfor %}
@@ -194,6 +186,7 @@
                
                 </div> -->
               </div>
+           
               <hr class="mb-4">
               <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
 
@@ -326,7 +319,7 @@
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
-      © 2019 Copyright:
+      © 2021 Copyright:
       <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
     </div>
     <!--/.Copyright-->
@@ -338,7 +331,7 @@
   <!-- JQuery -->
   <script type="text/javascript" src="{% static 'Order/js/jquery-3.4.1.min.js' %}"></script>
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="[% static 'Order/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Order/js/popper.min.js' %}"></script>
   <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="{% static 'Order/js/bootstrap.min.js' %}"></script>
   <!-- MDB core JavaScript -->
