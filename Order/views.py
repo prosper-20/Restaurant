@@ -139,6 +139,13 @@ class CheckoutView(View):
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
         if form.is_valid():
+            street_address = form.cleaned_data.get("street_address")
+            apartment_address = form.cleaned_data.get("apartment_address")
+            country = form.cleaned_data.get("country")
+            zip = form.cleaned_data.get("zip")
+            same_billing_address = form.cleaned_data.get("same_billing_address")
+            save_info = form.cleaned_data.get("save_info")
+            payment_option = form.cleaned_data.get("payment_option")
             
             return redirect('checkout')
         messages.warning(self.request, "Failed Checout")
