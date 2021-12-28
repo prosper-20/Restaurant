@@ -167,3 +167,8 @@ class CheckoutView(View):
             messages.error(self.request, "You do not have an active order")
             return redirect("order_summary")
         
+
+
+class PaymentView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, 'payment.html')
