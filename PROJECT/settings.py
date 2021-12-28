@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'restaurant',
     'Order',
     'users.apps.UsersConfig',
-    'django_countries'
+    'django_countries',
+    'stripe'
 ]
 
 ACCOUNT_ADAPTER = 'restaurant.account_adapter.NoNewUsersAccountAdapter'
