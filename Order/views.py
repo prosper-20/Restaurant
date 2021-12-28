@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, reverse, render, get_object_or_404
+from stripe.api_resources import order
 from .models import Item, OrderItem, Order, BillingAddress
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
@@ -9,6 +10,9 @@ from django.views.generic import View
 from .forms import CheckoutForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import stripe
+
+
 
 class HomeView(ListView):
     model = Item
@@ -161,7 +165,7 @@ class CheckoutView(View):
                 order.save()
                 # add redirect to the selected payment option 
                 return redirect('checkout')
-            messages.warning(self.request, "Failed Checout")
+            messages.warning(self.request, "Failed Checkout")
             return redirect('checkout')
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
@@ -171,4 +175,16 @@ class CheckoutView(View):
 
 class PaymentView(View):
     def get(self, *args, **kwargs):
-        return render(self.request, 'payment.html')
+        order 
+        return render(self.request, 'Order/payment.html')
+
+    def post(self, *args, **kwargs):
+        order = Order.objects.get(user=self.request.user, ordered=False)
+        token = self.request.POST.get('stripeToken')
+        stripe.Charge.create(
+            amount=order.gettotal() * 100, #Cents
+            currency='usd',
+            source=token
+        )
+
+        order.ordered = True
