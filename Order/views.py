@@ -11,8 +11,10 @@ from .forms import CheckoutForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import stripe
+from django.conf import settings
 
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class HomeView(ListView):
     model = Item
@@ -32,7 +34,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
-            return redirect("/")
+            return redirect("item_list")
         
 
 
@@ -187,7 +189,7 @@ class PaymentView(View):
             charge = stripe.Charge.create(
                 amount=amount, #Cents
                 currency='usd',
-                source=token
+                source="tok_mastercard"
             )
             #CREATE A PAYMENT
             payment = Payment()
