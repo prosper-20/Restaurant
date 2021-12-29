@@ -107,10 +107,9 @@ button:hover {
       <h2 class="my-5 h2 text-center">Payment</h2>
 
       <div class="row">
-
         <div class="col-md-12 mb-4">
           <div class="card">
-
+      
             {% if card %}
               <div style="padding: 5px 30px;">
                 <div class="custom-control custom-checkbox">
@@ -121,7 +120,7 @@ button:hover {
                 </div>
               </div>
             {% endif %}
-
+      
             <div class="current-card-form">
               <form action="." method="post" class="stripe-form">
                   {% csrf_token %}
@@ -132,7 +131,7 @@ button:hover {
                   <div id="card-errors" role="alert"></div>
               </form>
             </div>
-
+      
             <div class="new-card-form">
               <form action="." method="post" class="stripe-form" id="stripe-form">
                   {% csrf_token %}
@@ -157,61 +156,9 @@ button:hover {
           </div>
         </div>
         <!--Grid column-->
-        <div class="col-md-12 mb-4">
 
-          <!-- Heading -->
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>
-            <span class="badge badge-secondary badge-pill">{{ order.items.count  }}</span>
-          </h4>
+        {% include 'Order/order_snippets.html ' %}
 
-          <!-- Cart -->
-          <ul class="list-group mb-3 z-depth-1">
-            {%for order_item in order.items.all %}
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">{{ order_item.quantity }} x {{ order_item.item.title }}</h6>
-                  <small class="text-muted">{{ order_item.item.description }}</small>
-                </div>
-                <span class="text-muted">{{ order_item.get_final_price }}</span>
-              </li>
-            {% endfor %}
-
-
-            
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small>EXAMPLECODE</small>
-              </div>
-              <span class="text-success">-$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>${{ order.get_total }}</strong>
-            </li>
-          </ul>
-          <!-- Cart -->
-
-          <!-- Promo code -->
-          <!-- <form class="card p-2">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Redeem</button>
-              </div>
-            </div>
-          </form> -->
-          <!-- Promo code -->
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-
-        {% include "order_snippet.html" %}
 
       </div>
 
