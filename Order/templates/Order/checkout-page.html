@@ -91,7 +91,20 @@
   <!-- Navbar -->
 
   <!--Main layout-->
-  <main>
+  <div class="mt-5 pt-4">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">
+          <i class="fas fa-info-circle me-3"></i>
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <main class="mt-5 pt-4">
     <div class="container wow fadeIn">
 
       <!-- Heading -->
