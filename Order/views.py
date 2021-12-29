@@ -142,6 +142,7 @@ class CheckoutView(View):
             form = CheckoutForm()
             context = {
                 "form": form,
+                "couponform": CouponForm(),
                 'order': order
             }
             return render(self.request, "Order/checkout-page.html", context)
