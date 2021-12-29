@@ -208,6 +208,12 @@ class PaymentView(LoginRequiredMixin,View):
             payment.save()
 
             # assign payment to Order
+
+            order_items = Order.items.all()
+            order_items.update(orderd=True)
+            for item in order_items:
+                item.save()
+
             order.ordered = True
             order.payment = payment
             order.save()
