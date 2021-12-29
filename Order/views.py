@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, reverse, render, get_object_or_404
 from stripe.api_resources import order
-from .models import Item, OrderItem, Order, BillingAddress, Payment
+from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
@@ -259,6 +259,25 @@ class PaymentView(LoginRequiredMixin,View):
             messages.warning(self.request, "A serious error occured, we are on it.")
             return redirect("item_list")
 
+
+def get_coupon(request, code):
+    try:
+        coupon = Coupon.objects.get(code=code)
+        return coupon
+    except ObjectDoesNotExist:
+        messages.info(request, "You do not have an active order")
+        return redirect("checkout")
+
+
+def add_coupon(request, code):
+    try:
+        order = Order.objects.get(user=request.user, ordered=False)
+        coupon = get_coupon(request, code)
+
+    except ObjectDoesNotExist:
+        messages.info(request, "You do not have an active order")
+        return redirect("checkout")
+    
 
 
 
