@@ -7,7 +7,7 @@ from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
-from .forms import CheckoutForm
+from .forms import CheckoutForm, CouponForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import stripe
@@ -137,11 +137,19 @@ def product(request):
 
 class CheckoutView(View):
     def get(self, *args, **kwargs):
-        form = CheckoutForm
-        context = {
-            "form": form
-        }
-        return render(self.request, "Order/checkout-page.html", context)
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            form = CheckoutForm()
+            context = {
+                "form": form,
+                'order': order
+            }
+            return render(self.request, "Order/checkout-page.html", context)
+        except ObjectDoesNotExist:
+            messages.info(self.request, "You do not have an active order")
+            return redirect("checkout")
+        
+        
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
         try:
@@ -269,17 +277,24 @@ def get_coupon(request, code):
         return redirect("checkout")
 
 
-def add_coupon(request, code):
-    try:
-        order = Order.objects.get(user=request.user, ordered=False)
-        order.coupon = get_coupon(request, code)
-        order.save()
-        messages.success(request, "Successfully added coupon")
-        return redirect("checkout")
+def add_coupon(request):
+    if request.method == "POST":
+        form = CouponForm(request.POST or None)
+        if form.is_valid():
+            try:
+                code = form.cleaned_data.get("code")
+                order = Order.objects.get(user=request.user, ordered=False)
+                order.coupon = get_coupon(request, code)
+                order.save()
+                messages.success(request, "Successfully added coupon")
+                return redirect("checkout")
 
-    except ObjectDoesNotExist:
-        messages.info(request, "You do not have an active order")
-        return redirect("checkout")
+            except ObjectDoesNotExist:
+                messages.info(request, "You do not have an active order")
+                return redirect("checkout")
+
+    #TODO: raise error
+    return None
     
 
 
