@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models.expressions import Ref
 from django.shortcuts import redirect, reverse, render, get_object_or_404
 from stripe.api_resources import order
-from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon
+from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon, Refund
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
-from .forms import CheckoutForm, CouponForm
+from .forms import CheckoutForm, CouponForm, RefundForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import stripe
@@ -311,6 +312,33 @@ class AddCouponView(View):
                 return redirect("checkout")
     
 
+
+class RequestRefundView(View):
+    def post(self, *args, **kwargs):
+        form = RefundForm(self.request.POST)
+        if form.is_valid():
+            ref_code = form.cleaned_data.get('ref_code')
+            message = form.cleaned_data.get("message")
+            email = form.cleaned_data.get('email')
+            # Edit the order
+            try:
+                order = Order.objects.get(ref_code=ref_code)
+                order.refund_requested = True
+                order.save()
+
+                refund = Refund()
+                refund.order = order
+                refund.reason = message
+                refund.email = email
+                refund.save()
+
+                messages.info(self.request, "Your request has been received.")
+                return redirect('item_list')
+
+        
+            except ObjectDoesNotExist():
+                messages.info(self.request, "This order doesn't exist")
+                return redirect('item_list')
 
 
         

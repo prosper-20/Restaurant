@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem, Item, BillingAddress, Payment, Coupon
+from .models import Order, OrderItem, Item, BillingAddress, Payment, Coupon, Refund
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user',
@@ -25,6 +25,9 @@ class OrderAdmin(admin.ModelAdmin):
                     'refund_requested',
                     'refund_granted',
                 ]
+    search_fields = ['user__username',
+                     'ref_code'
+                    ]
     
 
 
@@ -34,3 +37,4 @@ admin.site.register(Item)
 admin.site.register(BillingAddress)
 admin.site.register(Coupon)
 admin.site.register(Payment)
+admin.site.register(Refund)
