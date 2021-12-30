@@ -22,6 +22,7 @@ class HomeView(ListView):
     template_name = 'Order/today_home_page.html'
     paginate_by = 10
 
+
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
 
