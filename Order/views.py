@@ -314,6 +314,14 @@ class AddCouponView(View):
 
 
 class RequestRefundView(View):
+    def get(self, *args, **kwargs):
+        form = RefundForm()
+        context = {
+            "form": form
+        }
+        return render(self.request, 'request_refund.html', context)
+
+
     def post(self, *args, **kwargs):
         form = RefundForm(self.request.POST)
         if form.is_valid():
@@ -335,10 +343,9 @@ class RequestRefundView(View):
                 messages.info(self.request, "Your request has been received.")
                 return redirect('item_list')
 
-        
             except ObjectDoesNotExist():
                 messages.info(self.request, "This order doesn't exist")
-                return redirect('item_list')
+                return redirect('request_refund')
 
 
         
