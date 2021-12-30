@@ -4,9 +4,11 @@ from django.urls import reverse
 from django_countries.fields import CountryField
 
 CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sports Wear'),
-    ('OW', 'OutWear'),
+    ('S', 'Snacks'),
+    ('E', 'Entre'),
+    ('D', 'Drink'),
+    ('A', 'Appetizer'),
+    ('MC', 'Main Course')
 )
 
 LABEL_CHOICES = (
