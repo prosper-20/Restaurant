@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.expressions import Ref
 from django.shortcuts import redirect, reverse, render, get_object_or_404
 from stripe.api_resources import order
-from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon, Refund
+from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
@@ -174,12 +174,13 @@ class CheckoutView(View):
                 # same_shipping_addres = form.cleaned_data.get("same_shipping_addres")
                 # save_info = form.cleaned_data.get("save_info")
                 payment_option = form.cleaned_data.get("payment_option")
-                billing_address = BillingAddress(
+                billing_address = Address(
                     user = self.request.user,
                     street_address=street_address,
                     apartment_address=apartment_address,
                     country= country,
-                    zip=zip
+                    zip=zip,
+                    address_type='B'
                 )
                 billing_address.save()
                 order.billing_address = billing_address
