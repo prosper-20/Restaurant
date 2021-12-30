@@ -2,6 +2,7 @@ from django import forms
 from django.utils.regex_helper import Choice
 from django_countries.fields import CountryField 
 from django_countries.widgets import CountrySelectWidget
+from pkg_resources import require
 
 
 PAYMENT_CHOICES = (
@@ -16,15 +17,36 @@ class CheckoutForm(forms.Form):
         'placeholder': 'Apartment or Suite'}
         ))
     shipping_country = CountryField(blank_label='(select country').formfield(
-        required=False
+        required=False,
         widget=CountrySelectWidget(attrs={
             'class': 'custom-select d-block w-100'
         }))
     shipping_zip = forms.CharField(required=False)
-    same_shipping_address = forms.BooleanField(required=False)
-    save_info = forms.BooleanField(required=False)
-    payment_option = forms.ChoiceField(widget=forms.RadioSelect, choices=PAYMENT_CHOICES)
 
+    # same_billing_address = forms.BooleanField(required=False)
+    # set_default_shipping = forms.BooleanField(required=False)
+    # use_default_shipping = forms.BooleanField(required=False)
+    # payment_option = forms.ChoiceField(widget=forms.RadioSelect, choices=PAYMENT_CHOICES)
+
+
+    billing_address = forms.CharField(required=False)
+    billing_address2 = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'placeholder': 'Apartment or Suite'}
+        ))
+    billing_country = CountryField(blank_label='(select country').formfield(
+        required=False,
+        widget=CountrySelectWidget(attrs={
+            'class': 'custom-select d-block w-100'
+        }))
+    billing_zip = forms.CharField(required=False)
+
+    same_billing_address = forms.BooleanField(required=False)
+    set_default_shipping = forms.BooleanField(required=False)
+    use_default_shipping = forms.BooleanField(required=False)
+    set_default_billing = forms.BooleanField(required=False)
+    use_default_billing = forms.BooleanField(required=False)
+
+    payment_option = forms.ChoiceField(widget=forms.RadioSelect, choices=PAYMENT_CHOICES)
 
 class CouponForm(forms.Form):
     code = forms.CharField(widget=forms.TextInput(attrs={
