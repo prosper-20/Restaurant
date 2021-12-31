@@ -1,388 +1,285 @@
-{% load static %}
-{% load cart_template_tags %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'Order/css/bootstrap.min.css' %}" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="{% static 'Order/css/mdb.min.css' %}" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="{% static 'Order/css/style.min.css' %}" rel="stylesheet">
-</head>
-
+{% block content %}
 <body class="grey lighten-3">
 
-  <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
-
-      <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong class="blue-text">MDB</strong>
-      </a>
-
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Home
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container">
+  
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+          <strong class="blue-text">MDB</strong>
+        </a>
+  
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="">Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="" target="_self">Product</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link waves-effect" href="" target="_self">Checkout</a>
               <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="#" target="_blank">Product</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free tutorials</a>
-          </li>
-        </ul>
-
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a class="nav-link waves-effect">
-              <span class="badge red z-depth-1 mr-1"> 1 </span>
-              <i class="fas fa-shopping-cart"></i>
-              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-              target="_blank">
-              <i class="fab fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-        </ul>
-
-      </div>
-
-    </div>
-  </nav>
-  <!-- Navbar -->
-
-  <!--Main layout-->
-  <div class="mt-5 pt-4">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">
-          <i class="fas fa-info-circle me-3"></i>
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            </li>
+          </ul>
+  
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a href="{% url 'order_summary' %}" class="nav-link waves-effect">
+                <span class="badge red z-depth-1 mr-1">1</span>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+              </a>
+            </li>
+          </ul>
+  
         </div>
-      {% endfor %}
-    {% endif %}
-  </div>
-  <main class="mt-5 pt-4">
-    <div class="container wow fadeIn">
+  
+      </div>
+    </nav>
+    <!-- Navbar -->
+  
+    <!--Main layout-->
+    <main>
+      <div class="container wow fadeIn">
+  
+        <!-- Heading -->
+        <h2 class="my-5 h2 text-center">Checkout form</h2>
+  
+        <!--Grid row-->
+        <div class="row">
+  
+          <!--Grid column-->
+          <div class="col-md-8 mb-4">
+  
+            <!--Card-->
+            <div class="card">
 
-      <!-- Heading -->
-      <h2 class="my-5 h2 text-center">Checkout form</h2>
+              <!-- <form>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary" type="submit">Checkout</button>
+              </form> -->
+  
+              <!--Card content-->
+              <form method="POST" class="card-body">
+                {% csrf_token %}
 
-      <!--Grid row-->
-      <div class="row">
-
-        <!--Grid column-->
-        <div class="col-md-8 mb-4">
-
-          <!--Card-->
-          <div class="card">
-
-            <!-- <form>
-              {% csrf_token %}
-              {{ form|crispy }}
-              <button class="btn btn-primary" type="submit">Checkout</button>
-            </form> -->
-
-            <!--Card content-->
-            <form method="post" class="card-body">
-              {% csrf_token %}
-              <h3>Shipping Address</h3>
-              <div class="hideable_shipping_form">
-                <!--address-->
-                <div class="md-form mb-5">
-                  <!-- <input type="text" id="address" class="form-control" placeholder="1234 Main St"> -->
-                  <input type="text" placeholder="1234 Main St" id="shipping_address" name="shipping_address" class="form-cotrol">
-                  <label for="shipping_address" class="">Address</label>
-                </div>
-
-                <!--address-2-->
-                <div class="md-form mb-5">
-                  <input type="text" id="shipping_address2" name="shipping_address2" class="form-control" placeholder="Apartment or suite">
-                  <label for="shipping_address2" class="">Address 2 (optional)</label>
-                </div>
-
-                <!--Grid row-->
-                <div class="row">
-
-                  <!--Grid column-->
-                  <div class="col-lg-4 col-md-12 mb-4">
-
-                    <label for="country">Country</label>
-                    <!-- <select class="custom-select d-block w-100" id="country" required>
-                      <option value="">Choose...</option>
-                      <option>United States</option>
-                    </select> -->
-                    {{ form.shipping_country }}
-                    <div class="invalid-feedback">
-                      Please select a valid country.
-                    </div>
-
+                <h3>Shipping Address</h3>
+                
+                <div class="hideable_shipping_form">
+                  <!--address-->
+                  <div class="md-form mb-5">
+                    <!-- <input type="text" id="address" class="form-control" placeholder="1234 Main St"> -->
+                    <input type="text" placeholder="1234 Main St" id="shipping_address" name="shipping_address" class="form-control">
+                    <label for="shipping_address" class="">Address</label>
                   </div>
-                  <!--Grid column-->
-
-                  
-
-                  <!--Grid column-->
-                  <div class="col-lg-4 col-md-6 mb-4">
-
-                    <label for="shipping_zip">Zip</label>
-                    <input type="text" class="form-control" id="shipping_zip" name="shipping_zip" placeholder="Zip Code" required>
-                    {{ form.zip }}
-                    <div class="invalid-feedback">
-                      Zip code required.
-                    </div>
-
+    
+                  <!--address-2-->
+                  <div class="md-form mb-5">
+                    <!-- <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite"> -->
+                    <input type="text" placeholder="Apartment or Suite" id="shipping_address2" name="shipping_address2" class="form-control">
+                    <label for="shipping_address2" class="">Address 2 (optional)</label>
                   </div>
-                  <!--Grid column-->
-
-                </div>
+    
+                  <!--Grid row-->
+                  <div class="row">
+    
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-4">
+    
+                      <label for="country">Country</label>
+                      <!-- <select class="custom-select d-block w-100" id="country" required>
+                        <option value="">Choose...</option>
+                        <option>United States</option>
+                      </select> -->
+                      {{ form.shipping_country }}
+                      <div class="invalid-feedback">
+                        Please select a valid country.
+                      </div>
+    
+                    </div>
+    
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                      
+                      
+                      <label for="shipping_zip">Zip</label>
+                      <input type="text" placeholder="Zip Code" id="shipping_zip" name="shipping_zip" class="form-control">
+                      
+                      <div class="invalid-feedback">
+                        Zip code required.
+                      </div>
+    
+                    </div>
+                    <!--Grid column-->
+    
+                  </div>
                   <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" name="same_shipping_address" id="same_shipping_address">
-                    <label class="custom-control-label" for="same_shipping_address">Billing address is the same as my shipping address</label>
+                    <label class="custom-control-label" for="same_shipping_address">Billing Address is the same as my Shipping address</label>
                   </div>
                   <div class="custom-control custom-checkbox">
-                    <input  type="checkbox" class="custom-control-input" name="set_default_shipping" id="set_default_shipping">
-                    <label class="custom-control-label" for="set_default_shipping">Save as default shipping address</label>
+                    <input type="checkbox" class="custom-control-input" name="set_default_shipping" id="set_default_shipping">
+                    <label class="custom-control-label" for="set_default_shipping">Save as deafult shipping address</label>
                   </div>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input  type="checkbox" class="custom-control-input" name="use_default_shipping" id="use_default_shipping">
-                <label class="custom-control-label" for="use_default_shipping">Use default shipping address: 10, Obe Street</label>
-              </div>
-                <hr>
-            
-
-              <h3>Billing Address</h3>
-              <div class="hideable_shipping_form">
-                <!--address-->
-                <div class="md-form mb-5">
-                  <!-- <input type="text" id="address" class="form-control" placeholder="1234 Main St"> -->
-                  {{ form.street_address }}
-                  <label for="address" class="">Address</label>
                 </div>
 
-                <!--address-2-->
-                <div class="md-form mb-5">
-                  <!-- <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite"> -->
-                  {{ form.appartment_address }}
-                  <label for="address-2" class="">Address 2 (optional)</label>
+                {% if default_shipping_address %}
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="use_default_shipping" id="use_default_shipping">
+                  <label class="custom-control-label" for="use_default_shipping">Use deafult shipping address: {{ default_shipping_address.street_address|truncatechars:10}}</label>
                 </div>
+                {% endif %}
+                  <hr>
+                
+  
+                
 
-                <!--Grid row-->
-                <div class="row">
-
-                  <!--Grid column-->
-                  <div class="col-lg-4 col-md-12 mb-4">
-
-                    <label for="country">Country</label>
-                    <!-- <select class="custom-select d-block w-100" id="country" required>
-                      <option value="">Choose...</option>
-                      <option>United States</option>
-                    </select> -->
-                    {{ form.country }}
-                    <div class="invalid-feedback">
-                      Please select a valid country.
+                <h3>Billing Address</h3>
+                
+                <div class="hideable_billing_form">
+                  <!--address-->
+                  <div class="md-form mb-5">
+                    <!-- <input type="text" id="address" class="form-control" placeholder="1234 Main St"> -->
+                    <input type="text" placeholder="1234 Main St" id="billiing_address" name="billing_address" class="form-control">
+                    <label for="billin\ng_address" class="">Address</label>
+                  </div>
+    
+                  <!--address-2-->
+                  <div class="md-form mb-5">
+                    <!-- <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite"> -->
+                    <input type="text" placeholder="Apartment or Suite" id="billing_address2" name="biling_address2" class="form-control">
+                    <label for="billing_address2" class="">Address 2 (optional)</label>
+                  </div>
+    
+                  <!--Grid row-->
+                  <div class="row">
+    
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-4">
+    
+                      <label for="country">Country</label>
+                      <!-- <select class="custom-select d-block w-100" id="country" required>
+                        <option value="">Choose...</option>
+                        <option>United States</option>
+                      </select> -->
+                      {{ form.billing_country }}
+                      <div class="invalid-feedback">
+                        Please select a valid country.
+                      </div>
+    
                     </div>
-
-                  </div>
-                  <!--Grid column-->
-
-                  
-
-                  <!--Grid column-->
-                  <div class="col-lg-4 col-md-6 mb-4">
-
-                    <label for="zip">Zip</label>
-                    <!-- <input type="text" class="form-control" id="zip" placeholder="" required> -->
-                    {{ form.zip }}
-                    <div class="invalid-feedback">
-                      Zip code required.
+    
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                      
+                      
+                      <label for="billing_zip">Zip</label>
+                      <input type="text" placeholder="Zip Code" id="billing_zip" name="billing_zip" class="form-control">
+                      
+                      <div class="invalid-feedback">
+                        Zip code required.
+                      </div>
+    
                     </div>
-
+                    <!--Grid column-->
+    
                   </div>
-                  <!--Grid column-->
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="set_default_billing" id="set_default_billing">
+                    <label class="custom-control-label" for="set_default_billing">Save as default billing address</label>
+                  </div>
 
                 </div>
-                <!--Grid row-->
-                
-              </div>
-              <hr>
-                
-              
-                
-
-              <div class="custom-control custom-checkbox">
-                <input {% if form.same_shipping_address.value %}checked {% endif %} type="checkbox" class="custom-control-input" name="same_billing_address" id="same-address">
-                <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input {% if form.save_info.value %} checked {% endif %} type="checkbox" class="custom-control-input" name="save_info" id="save-info">
-                <label class="custom-control-label" for="save-info">Save this information for next time</label>
-              </div>
-
-              <hr>
-
-              <h3>Payment Option</h3>
-
-
-              <div class="d-block my-3">
-              {% for value, name in form.fields.payment_option.choices %}
-                <div class="custom-control custom-radio">
-                  <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input"required>
-                  <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
-                </div>
-              {% endfor %}
-                <!-- <div class="custom-control custom-radio">
-                  <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                  <label class="custom-control-label" for="paypal">Paypal</label>
-               
-                </div> -->
-              </div>
-           
-              <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-
-            </form>
-
-          </div>
-          <!--/.Card-->
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-4 mb-4">
-          {% include 'Order/order_snippets.html' %}
           
+                {% if default_billing_address %}
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="use_default_billing" id="use_default_billing">
+                  <label class="custom-control-label" for="use_default_billing">Use default billing address: {{ default_billing_address.street_address|truncatechars:10}}</label>
+                </div>
+                {% endif %}
+                
+                <hr>
+
+                <h3>Payment Option</h3>
+  
+                <div class="d-block my-3">
+                  {% for value, name in form.fields.payment_option.choices  %}
+                  <div class="custom-control custom-radio">
+                    <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input" required>
+                    <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
+                  </div>
+                  {% endfor %}
+                </div>
+                
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              </form>
+
+              
+  
+            </div>
+            <!--/.Card-->
+  
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-md-4 mb-4">
+            {% include "Order/order_snippets.html" %}
+          </div>
+          <!--Grid column-->
+  
         </div>
-        <!--Grid column-->
-
+        <!--Grid row-->
+  
       </div>
-      <!--Grid row-->
+    </main>
+    <!--Main layout-->
+  
+{% endblock content %}
 
-    </div>
-  </main>
-  <!--Main layout-->
+{% block extra_scripts %}
+</script>
 
-  <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+<script>
+  var hideable_billing_form = $('.hideable_shipping_form');
+  var hideable_shipping_form = $('.hideable_billing_form');
 
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank" role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
+  var use_default_shipping = document.querySelector('input[name=use_default_shipping]');
+  var use_default_billing = document.querySelector('input[name=use_default_billing]');
 
-    <hr class="my-4">
+  use_default_shipping.addEventListener('change', function() {
+    if (this.checked) {
+      hideable_shipping_form.hide();
+    } else {
+      hideable_shipping_form.show()
+    }
+  })
 
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-        <i class="fab fa-facebook-f mr-3"></i>
-      </a>
+  use_default_billing.addEventListener('change', function() {
+    if (this.checked) {
+      hideable_billing_form.hide();
+    } else {
+      hideable_billing_form.show()
+    }
+  })
 
-      <a href="https://twitter.com/MDBootstrap" target="_blank">
-        <i class="fab fa-twitter mr-3"></i>
-      </a>
+</script>
 
-      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-        <i class="fab fa-youtube mr-3"></i>
-      </a>
-
-      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-        <i class="fab fa-google-plus-g mr-3"></i>
-      </a>
-
-      <a href="https://dribbble.com/mdbootstrap" target="_blank">
-        <i class="fab fa-dribbble mr-3"></i>
-      </a>
-
-      <a href="https://pinterest.com/mdbootstrap" target="_blank">
-        <i class="fab fa-pinterest mr-3"></i>
-      </a>
-
-      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-        <i class="fab fa-github mr-3"></i>
-      </a>
-
-      <a href="http://codepen.io/mdbootstrap/" target="_blank">
-        <i class="fab fa-codepen mr-3"></i>
-      </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2021 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-    </div>
-    <!--/.Copyright-->
-
-  </footer>
-  <!--/.Footer-->
-
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="{% static 'Order/js/jquery-3.4.1.min.js' %}"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="{% static 'Order/js/popper.min.js' %}"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{% static 'Order/js/bootstrap.min.js' %}"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{% static 'Order/js/mdb.min.js' %}"></script>
-  <!-- Initializations -->
-  <script type="text/javascript">
-    // Animations initialization
-    new WOW().init();
-  </script>
-</body>
-
-</html>
+{% endblock extra_scripts %}
