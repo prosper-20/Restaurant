@@ -26,7 +26,7 @@ def is_valid_form(values):
     for field in values:
         if field == "":
             valid = False
-        return valid
+    return valid
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
