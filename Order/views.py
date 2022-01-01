@@ -4,11 +4,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.expressions import Ref
 from django.shortcuts import redirect, reverse, render, get_object_or_404
 from stripe.api_resources import order
-from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund
+from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
-from .forms import CheckoutForm, CouponForm, RefundForm
+from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import stripe
@@ -321,6 +321,18 @@ class PaymentView(LoginRequiredMixin,View):
                 "order": order,
                 "DISPLAY_COUPON_FORM": False
             }
+            userprofile = self.request.user.userprofile
+            if userprofile.one_click_purchasing:
+                cards = stripe.Customer.list_sources(
+                    userprofile.stripe.customer_id,
+                    limit=3,
+                    object='card'
+                )
+                card_list = cards['data']
+                if len[card_list] > 0:
+                    context.update[{
+                        'card': card_list[0]
+                    }]
             return render(self.request, 'Order/payment.html', context)
         else:
             messages.warning(self.request, "You have not added a billing address")
@@ -329,23 +341,57 @@ class PaymentView(LoginRequiredMixin,View):
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        token = self.request.POST.get('stripeToken')
-        amount=int(order.get_total() * 100)
+        form = PaymentForm(self.request.POST)
+        userprofile = UserProfile.objects.get(user=self.request.user)
+        if form.is_valid():
+            token = self.request.POST.get('stripeToken')
+            save = form.cleaned_data.get('save')
+            use_default = form.cleaned_data.get('use_default')
+
+            if save:
+                if save:
+                    if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
+                        customer = stripe.Customer.retrieve(
+                        userprofile.stripe_customer_id)
+                        customer.sources.create(source=token)
+
+                else:
+                    customer = stripe.Customer.create(
+                        email=self.request.user.email,
+                    )
+                    customer.sources.create(source=token)
+                    userprofile.stripe_customer_id = customer['id']
+                    userprofile.one_click_purchasing = True
+                    userprofile.save()
+
+            amount = int(order.get_total() * 100)
+    
 
         try:
-            charge = stripe.Charge.create(
-                amount=amount, #Cents
-                currency='usd',
-                source="tok_mastercard"
-            )
-            #CREATE A PAYMENT
+
+            if use_default or save:
+                # charge the customer because we cannot charge the token more than once
+                charge = stripe.Charge.create(
+                    amount=amount,  # cents
+                    currency="usd",
+                    customer=userprofile.stripe_customer_id
+                )
+            else:
+                # charge once off on the token
+                charge = stripe.Charge.create(
+                    amount=amount,  # cents
+                    currency="usd",
+                    source=token
+                )
+
+            # create the payment
             payment = Payment()
             payment.stripe_charge_id = charge['id']
             payment.user = self.request.user
             payment.amount = order.get_total()
             payment.save()
 
-            # assign payment to Order
+            # assign the payment to the order
 
             order_items = order.items.all()
             order_items.update(ordered=True)
@@ -357,9 +403,8 @@ class PaymentView(LoginRequiredMixin,View):
             order.ref_code = create_ref_code()
             order.save()
 
-            messages.success(self.request, "Your order was successful")
+            messages.success(self.request, "Your order was successful!")
             return redirect("item_list")
-
         except stripe.error.CardError as e:
             # Since it's a decline, stripe.error.CardError will be caught
             body = e.json_body
