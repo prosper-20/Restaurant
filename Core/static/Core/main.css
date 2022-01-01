@@ -96,5 +96,13 @@ body {
     background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
     height: 100vh;
   }
+
+
+  .meals {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-style: italic;
+    color: #ffffff;
+  }
     
     
