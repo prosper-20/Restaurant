@@ -345,16 +345,15 @@ class PaymentView(LoginRequiredMixin,View):
         form = PaymentForm(self.request.POST)
         userprofile = UserProfile.objects.get(user=self.request.user)
         if form.is_valid():
-            token = self.request.POST.get('stripeToken')
+            token = form.cleaned_data.get('stripeToken')
             save = form.cleaned_data.get('save')
             use_default = form.cleaned_data.get('use_default')
 
             if save:
-                if save:
-                    if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
-                        customer = stripe.Customer.retrieve(
+                if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
+                    customer = stripe.Customer.retrieve(
                         userprofile.stripe_customer_id)
-                        customer.sources.create(source=token)
+                    customer.sources.create(source=token)
 
                 else:
                     customer = stripe.Customer.create(
@@ -443,6 +442,9 @@ class PaymentView(LoginRequiredMixin,View):
             # Send an email
             messages.warning(self.request, "A serious error occured, we are on it.")
             return redirect("item_list")
+
+        messages.warning(self.request, "Invalid data received")
+        return redirect("payment")
 
 
 def get_coupon(request, code):
