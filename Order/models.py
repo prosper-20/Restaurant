@@ -29,6 +29,9 @@ class UserProfile(models.Model):
     stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
     one_click_purchasing = models.BooleanField()
 
+    def __str__(self):
+        return self.user.username
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()

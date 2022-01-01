@@ -319,17 +319,18 @@ class PaymentView(LoginRequiredMixin,View):
         if order.billing_address:
             context = {
                 "order": order,
-                "DISPLAY_COUPON_FORM": False
+                "DISPLAY_COUPON_FORM": False,
+                'STRIPE_PUBLIC_KEY' : settings.STRIPE_PUBLISHABLE_KEY
             }
             userprofile = self.request.user.userprofile
             if userprofile.one_click_purchasing:
                 cards = stripe.Customer.list_sources(
-                    userprofile.stripe.customer_id,
+                    userprofile.stripe_customer_id,
                     limit=3,
                     object='card'
                 )
                 card_list = cards['data']
-                if len[card_list] > 0:
+                if len(card_list) > 0:
                     context.update[{
                         'card': card_list[0]
                     }]
