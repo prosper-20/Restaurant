@@ -77,25 +77,25 @@
         <ul class="navbar-nav nav-flex-icons">
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a href="{% url 'order_summary' %}" class="nav-link waves-effect">
+            <a href="{% url 'order_summary' %}" class="nav-link waves-effect blue-text">
               <span class="badge red z-depth-1 mr-1"> {{request.user|cart_item_count}}</span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block blue-text"> Cart </span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
+            <a class="nav-link waves-effect blue-text" href="{% url 'account_logout' %}">
               <span class="clearfix d-none d-sm-inline-block blue-text">Logout</span>
             </a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+            <a class="nav-link waves-effect blue-text" href="{% url 'account_login' %}">
               <span class="clearfix d-none d-sm-inline-block"> Login</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="">
+            <a class="nav-link waves-effect blue-text" href="">
               <span class="clearfix d-none d-sm-inline-block">Sign Up</span>
             </a>
           </li>
@@ -108,8 +108,9 @@
   </nav>
   <!-- Navbar -->
 
-    {% if messages %}
-    <div class="mt-3 pt-2">    
+    
+    <div class="mt-5 pt-4">
+      {% if messages %}  
         {% for message in messages %}
           <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">
             <i class="fas fa-info-circle me-3"></i>
