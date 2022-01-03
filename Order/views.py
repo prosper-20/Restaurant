@@ -511,7 +511,34 @@ class RequestRefundView(View):
 
 
 def snacks_view(request):
-    return render(request, "Order/snacks.html")
+    items = Item.objects.filter(id=5).all().order_by('-id')
+    context = {
+        "items": items,
+    }
+    return render(request, "Order/snacks.html", context)
+
+def appetizers_view(request):
+    items = Item.objects.filter(id=4).all().order_by('-id')
+    context = {
+        "items": items,
+    }
+    return render(request, "Order/appetizer.html", context)
+
+def maincourse_view(request):
+    items = Item.objects.filter(id=3).all().order_by('-id')
+    context = {
+        "items": items,
+    }
+    return render(request, "Order/main_course.html", context)
+
+def desserts_view(request):
+    items = Item.objects.filter(id=1).all().order_by('-id')
+    context = {
+        "items": items,
+    }
+    return render(request, "Order/desserts.html", context)
+
+
 
 
         

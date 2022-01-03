@@ -1,0 +1,533 @@
+{% extends "Order/base.html" %}
+
+{% block content %}
+<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h3 class="mb-4">
+                <strong class="meals">Welcome to P's Diner</strong>
+              </h3>
+
+              <p>
+                <strong class="meals">Meals like never before</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>P's Diner is the story of the Edward family and is built on family love and cooperation. 
+                  The restaurant is a real gourmet’s paradise.
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Place an Order
+                <i class="fa fa-shopping-cart ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h3 class="mb-4">
+                <strong class="meals">P'S Diner</strong>
+              </h3>
+
+              <p>
+                <strong class="meals">Give it a Try!</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Its beginnings can be traced back to the year 1992 when Edward Prosper,
+                   having gained invaluable experience abroad, returned home to Nigeria after 5 years.
+                  </strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Our Menu
+                <i class="fa fa-bars ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://images.unsplash.com/photo-1530648672449-81f6c723e2f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=789&q=80'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h3 class="mb-4">
+                <strong class="meals">Connecting the world through food</strong>
+              </h3>
+
+              <p>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong class="meals">Since 1967 Spur has grown across South Africa and abroad – providing our customers with a warm, 
+                  relaxed dining experience in a comfortable, family friendly environment.</strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Connect With Us
+                <i class="fa fa-comments ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+
+  </div>
+  <!--/.Carousel Wrapper-->
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style="background-color: rebeccapurple;">
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Categories:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">All
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Snacks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Main Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Desserts</a>
+            </li>
+
+          </ul>
+          <!-- Links -->
+
+          <form class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            {% for item in items %}
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ item.image.url }}" class="card-img-top" alt="">
+                <a href="{{ item.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="" class="grey-text">
+                  <h5><strong style="color: black;">{{ item.get_category_display }}</strong></h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                      <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>$
+                      {% if item.discount_price %}
+                        {{ item.discount_price }}
+                      {% else %}
+                      {{ item.price }}
+                      {% endif %}
+                </strong>
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+            
+
+          </div>
+          {% endfor %}
+          <!--Grid column-->
+
+
+          </div>
+          <!--Grid column-->
+          
+
+        </div>
+        <!--Grid row-->
+
+      </section>
+      <!--Section: Products v.3-->
+
+
+
+      <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://www.eldtrain.com.au/wp-content/uploads/2012/03/more-customers.jpg"
+              class="d-block w-100"
+              alt="Wild Landscape"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h3 class="meals" style="color: black; font-weight: 900;">Bringing people together over great food to create outstanding memories!</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+      <!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade pt-0 mt-0" data-ride="carousel">
+
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+  </ol>
+  <!--/.Indicators-->
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+
+    <!--First slide-->
+    <div class="carousel-item active">
+      <div class="view" style="background-image: url('https://www.eldtrain.com.au/wp-content/uploads/2012/03/more-customers.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+        <!-- Mask & flexbox options-->
+        <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+          <!-- Content -->
+          <div class="text-center white-text mx-5 wow fadeIn">
+            <h3 class="mb-4">
+              <strong class="meals">Bringing people together over great food to create outstanding memories!</strong>
+            </h3>
+
+            <!-- <p>
+              <strong class="meals">Meals like never before</strong>
+            </p> -->
+
+            <p class="mb-4 d-none d-md-block">
+              <strong>Meals like never before
+                </strong>
+            </p>
+
+            <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Place an Order
+              <i class="fa fa-shopping-cart ml-2"></i>
+            </a>
+          </div>
+          <!-- Content -->
+
+        </div>
+        <!-- Mask & flexbox options-->
+
+      </div>
+    </div>
+    <!--/First slide-->
+
+    <!--Second slide-->
+    <div class="carousel-item">
+      <div class="view" style="background-image: url('https://media.istockphoto.com/photos/christmas-theme-charcuterie-top-view-table-scene-against-dark-wood-picture-id1282169219?b=1&k=20&m=1282169219&s=170667a&w=0&h=TEZKs1sOYEaPGdKoKR_bJ--IPGekMjafEPBobR3982I='); background-repeat: no-repeat; background-size: cover;">
+
+        <!-- Mask & flexbox options-->
+        <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+          <!-- Content -->
+          <div class="text-center white-text mx-5 wow fadeIn">
+            <h3 class="mb-4">
+              <strong class="meals">Discover Our Meals</strong>
+            </h3>
+
+            <p>
+              <strong class="meals">Give it a Try!</strong>
+            </p>
+
+            <!-- <p class="mb-4 d-none d-md-block">
+              <strong>Its beginnings can be traced back to the year 1992 when Edward Prosper,
+                 having gained invaluable experience abroad, returned home to Nigeria after 5 years.
+                </strong>
+            </p> -->
+
+            <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Unlock Meals
+              <i class="fas fa-unlock ml-2"></i>
+            </a>
+          </div>
+          <!-- Content -->
+
+        </div>
+        <!-- Mask & flexbox options-->
+
+      </div>
+    </div>
+    <!--/Second slide-->
+
+    <!--Third slide-->
+    <div class="carousel-item">
+      <div class="view" style="background-image: url('https://images.unsplash.com/photo-1499725144476-a35e60e41ab8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlYWQlMjBzdG9yeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-size: cover;">
+
+        <!-- Mask & flexbox options-->
+        <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+          <!-- Content -->
+          <div class="text-center white-text mx-5 wow fadeIn">
+            <h3 class="mb-4">
+              <strong class="meals">Read Our Story</strong>
+            </h3>
+
+            <p>
+            </p>
+
+            <p class="mb-4 d-none d-md-block">
+              <strong class="meals">Since 1967 Spur has grown across South Africa and abroad – providing our customers with a warm, 
+                relaxed dining experience in a comfortable, family friendly environment.</strong>
+            </p>
+
+            <a target="_blank" href="{% url 'about' %}" class="btn btn-outline-white btn-lg">Read
+              <i class="fa fa-book ml-2"></i>
+            </a>
+          </div>
+          <!-- Content -->
+
+        </div>
+        <!-- Mask & flexbox options-->
+
+      </div>
+    </div>
+    <!--/Third slide-->
+
+  </div>
+  <!--/.Slides-->
+
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+
+</div>
+<!--/.Carousel Wrapper-->
+
+
+
+<section class="packages-section js--packages-section">
+  <div class="row">
+      <h2 class="packages-heading">We also offer Outdoor Catering Services</h2>
+  </div>
+  <div class="row">
+      <div class="col span_1_of_3">
+          <div class="package-box">
+              <div>
+                  <h4 class="package-heading">Regular</h4>
+                  <span>&#8358;</span>
+                  <p class="package-price">600,000 <span>300 guests</span></p>
+                  <p class="package-para">Lorem ipsum dolor sit, amet consectett cum eni lorem lorem lorem lorem</p>
+              </div>
+              <div>
+                  <ul>
+                      <li><i class="fas fa-check small-icon"></i>SEO, SMO and PPC</li>
+                      <li><i class="fas fa-check small-icon"></i>2 Blogs Per Month</li>
+                      <li><i class="fas fa-check small-icon"></i>Facebook and Twitter Marketing</li>
+                      <li><i class="fas fa-check small-icon"></i>Monthly Performance</li>
+                      <li><i class="fas fa-check small-icon"></i>Traffic Report</li>
+                  </ul>
+              </div>
+              <div>
+                  <a href="#" class="btn btn-full">Select</a>
+              </div>
+          </div>
+      </div>
+      <div class="col span_1_of_3">
+          <div class="package-box">
+              <div>
+                  <h4 class="package-heading">V.I.P</h4>
+                  <span>&#8358;</span>
+                  <p class="package-price">800,000 <span>500 guests</span></p>
+                  <p class="package-para">Lorem ipsum dolor sit, amet consectett cum eni lorem lorem lorem lorem</p>
+              </div>
+              <div>
+                  <ul>
+                      <li><i class="fas fa-check small-icon"></i>SEO, SMO and PPC</li>
+                      <li><i class="fas fa-check small-icon"></i>4 Blogs Per Month</li>
+                      <li><i class="fas fa-check small-icon"></i>All social media platforms</li>
+                      <li><i class="fas fa-check small-icon"></i>Monthly Performance</li>
+                      <li><i class="fas fa-check small-icon"></i>Traffic Report</li>
+                  </ul>
+              </div>
+              <div>
+                  <a href="#" class="btn btn-full">Select</a>
+              </div>
+          </div>
+      </div>
+      <div class="col span_1_of_3">
+          <div class="package-box">
+              <div>
+                  <h4 class="package-heading">V.V.I.P</h4>
+                  <span style="font-size: large; margin-top: 1px;">&#8358;</span>
+                  <p class="package-price">1M <span>1,000 guests</span></p>
+                  <p class="package-para">Lorem ipsum dolor sit, amet consectett cum eni lorem lorem lorem lorem</p>
+              </div>
+              <div>
+                  <ul>
+                      <li><i class="fas fa-check small-icon"></i>Personalised Marketing</li>
+                      <li><i class="fas fa-check small-icon"></i>8 Blogs Per Month</li>
+                      <li><i class="fas fa-check small-icon"></i>All social media channels</li>
+                      <li><i class="fas fa-check small-icon"></i>Monthly Performance</li>
+                      <li><i class="fas fa-check small-icon"></i>Traffic Report</li>
+                  </ul>
+              </div>
+              <div>
+                  <a href="#" class="btn btn-full">Select</a>
+              </div>
+          </div>
+      </div>
+</section>
+
+
+
+
+      
+
+      <!--Pagination-->
+      {% if is_paginated %}
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          <!--Arrow left-->
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item-active">
+            <a class="page-link" href="?page={{ page_obj.number }}" aria-label="Next">{{ page_obj.number }}
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          
+          
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+      <!--Pagination-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+{% endblock content %}
