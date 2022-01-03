@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.db.models.enums import Choices
 from django.urls import reverse
 from django.db.models.signals import post_save
 from django_countries.fields import CountryField
@@ -45,7 +46,7 @@ class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.CharField(choices=CATEGORY_CHOICES, max_length=3)
     label =  models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
