@@ -509,6 +509,11 @@ class RequestRefundView(View):
                 return redirect('request_refund')
 
 
+
+def snacks_view(request):
+    return render(request, "Order/snacks.html")
+
+
         
 
         
