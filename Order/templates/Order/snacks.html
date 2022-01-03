@@ -163,14 +163,14 @@
                 
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Snacks</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Main Course</a>
-            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Desserts <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'snacks' %}">Snacks</a><span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'main_course' %}">Main Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Desserts</a>
             </li>
 
           </ul>

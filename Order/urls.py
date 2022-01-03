@@ -28,9 +28,9 @@ urlpatterns = [
     path("checkout/", CheckoutView.as_view(), name="checkout"),
     path("payment/<str:payment_option>/", PaymentView.as_view(), name='payment'),
     path('request-refund/', RequestRefundView.as_view(), name='request_refund'),
-    path('snacks/', snacks_view, name="snacks"),
-    path('maincourse/', maincourse_view, name="main_course"),
-    path('appetizers/', appetizers_view, name="appetizers"),
-    path('desserts/', desserts_view, name="desserts"),
+    path('snacks/', views.snacks_view, name="snacks"),
+    path('maincourse/', views.maincourse_view, name="main_course"),
+    path('appetizers/', views.appetizers_view, name="appetizers"),
+    path('desserts/', views.desserts_view, name="desserts"),
 
 ]
