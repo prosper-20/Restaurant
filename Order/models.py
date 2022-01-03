@@ -32,11 +32,20 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+class Category(models.Model):
+    name = models.CharField(max_length=30, blank=True, null=True)
+
+    verbose_name_plural = "categories"
+    
+    def __str__(self):
+        return self.name
+
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
-    category = models.CharField(max_length=30)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     label =  models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
