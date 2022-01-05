@@ -550,13 +550,13 @@ class reservation_view(ListView):
 
 def appointment(request):
     if request.method == "POST":
-        your_name = request.POST['your_name']
-        your_phone = request.POST['your_phone']
-        your_email = request.POST['your_email']
-        your_address = request.POST['your_address']
-        your_schedule = request.POST['your_schedule']
-        your_time = request.POST['your_time']
-        your_message = request.POST['your_message']
+        your_name = request.POST['your-name']
+        your_phone = request.POST['your-phone']
+        your_email = request.POST['your-email']
+        your_address = request.POST['your-address']
+        your_schedule = request.POST['your-schedule']
+        your_time = request.POST['your-time']
+        your_message = request.POST['your-message']
     
     
         return render(request, 'Order/appointment.html', {
