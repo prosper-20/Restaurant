@@ -544,6 +544,35 @@ def dentist_view(request):
 def reservation_view(request):
     return render(request, 'Order/reservation.html')
 
+def appointment(request):
+    if request.method == "POST":
+        your_name = request.POST['your_name']
+        your_phone = request.POST['your_phone']
+        your_email = request.POST['your_email']
+        your_address = request.POST['your_address']
+        your_schedule = request.POST['your_schedule']
+        your_time = request.POST['your_time']
+        your_message = request.POST['your_message']
+    
+    
+        return render(request, 'Order/reservation.html', context = {
+        "your_name": your_name,
+        "your_phone": your_phone,
+        "your_email": your_email,
+        "your_address": your_address,
+        "your_schedule": your_schedule,
+        "your_time": your_time,
+        "your_message": your_message,
+        
+    })
+
+    else:
+        
+        return render(request, 'Order/testing.html', {})
+
+
+
+
 
 
 
