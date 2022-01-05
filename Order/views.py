@@ -559,7 +559,7 @@ def appointment(request):
         your_message = request.POST['your_message']
     
     
-        return render(request, 'Order/testing.html', {
+        return render(request, 'Order/appointment.html', {
         "your_name": your_name,
         "your_phone": your_phone,
         "your_email": your_email,
