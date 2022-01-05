@@ -538,6 +538,9 @@ def desserts_view(request):
     }
     return render(request, "Order/desserts.html", context)
 
+def dentist_view(request):
+    return render(request, "Order/dentist.html")
+
 
 
 
