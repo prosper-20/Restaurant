@@ -541,8 +541,12 @@ def desserts_view(request):
 def dentist_view(request):
     return render(request, "Order/dentist.html")
 
-def reservation_view(request):
-    return render(request, 'Order/reservation.html')
+
+class reservation_view(ListView):
+    model = Item
+    context_object_name = "items"
+    template_name = 'Order/reservation.html'
+    paginate_by = 10
 
 def appointment(request):
     if request.method == "POST":
@@ -555,7 +559,7 @@ def appointment(request):
         your_message = request.POST['your_message']
     
     
-        return render(request, 'Order/reservation.html', context = {
+        return render(request, 'Order/testing.html', {
         "your_name": your_name,
         "your_phone": your_phone,
         "your_email": your_email,
@@ -567,8 +571,7 @@ def appointment(request):
     })
 
     else:
-        
-        return render(request, 'Order/testing.html', {})
+        return render(request, 'Order/reservation.html')
 
 
 

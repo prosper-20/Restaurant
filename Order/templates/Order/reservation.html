@@ -412,16 +412,6 @@
 <!--/.Carousel Wrapper-->
 
 
-<h5>Review Section</h5>
-
-{{your_phone}}
-{{your_address}}
-{{your_message}}
-{{your_name}}
-{{your_phone}}
-{{your_scheldule}}
-{{your_time}}
-
 
 <section class="packages-section js--packages-section">
   <div class="row">
@@ -513,7 +503,7 @@
         <div class="col-12">
           <!-- Appointment Form -->
           <div class="appointment-form">
-            <form action="{% url 'reservation' %}" method="post">
+            <form action="{% url 'appointment' %}" method="post">
               {% csrf_token %}
               <div class="row">
                 <div class="col-md-6">
