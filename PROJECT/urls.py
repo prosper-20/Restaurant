@@ -23,7 +23,7 @@ from users import views as user_views
 from users.views import register, profile_edit
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import views as auth_views
-from Order.views import dentist_view
+from Order.views import dentist_view, reservation_view
 
 
 urlpatterns = [
@@ -40,7 +40,8 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name="users/logout.html"), name='logout'),
     path('profile/', user_views.profile, name='profile'),
     path("profile/edit/", user_views.profile_edit, name="profile_edit"),
-    path("dentist/", dentist_view, name="dentist")
+    path("dentist/", dentist_view, name="dentist"),
+    path('reservation/', reservation_view, name='reservation')
 
 ]
 

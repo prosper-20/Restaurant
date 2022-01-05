@@ -541,6 +541,9 @@ def desserts_view(request):
 def dentist_view(request):
     return render(request, "Order/dentist.html")
 
+def reservation_view(request):
+    return render(request, 'Order/reservation.html')
+
 
 
 
