@@ -558,7 +558,7 @@ def appointment(request):
         your_time = request.POST['your-time']
         your_message = request.POST['your-message']
     
-    
+        messages.success(request, f"Hi {your_name}, your reservation has been placed. Kindly Click On the Link in your mail to confrim your reservation.")
         return render(request, 'Order/appointment.html', {
         "your_name": your_name,
         "your_phone": your_phone,
