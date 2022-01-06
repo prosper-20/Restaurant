@@ -72,7 +72,8 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "This item quantity was updated")
-            return redirect('product', slug=slug)
+            # return redirect('product', slug=slug)
+            return redirect('order_summary')
         else:
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart")

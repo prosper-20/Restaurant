@@ -5,12 +5,13 @@ from .views import (
     Order,
     Test_Order,
     OrderConfirmation,
-    OrderPayConfirmation)
+    OrderPayConfirmation,
+    home_page)
 from . import views
 
 
 urlpatterns = [
-    path('', Index.as_view(), name='index'),
+    path('', views.home_page, name='index'),
     path('about/', About.as_view(), name='about'),
     path('order/', Order.as_view(), name='order'),
     path('test-order/', Test_Order.as_view(), name="test_order"),
