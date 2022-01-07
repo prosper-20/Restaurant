@@ -13,6 +13,10 @@ html, body {
 	font-weight: 300;
 }
 
+.seun {
+	margin-top: 0;
+}
+
 .row {
 	max-width: 1140px;
 	margin: 0 auto;
