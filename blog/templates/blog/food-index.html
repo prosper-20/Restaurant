@@ -34,10 +34,10 @@
     <link href="{% static 'blog/css/responsive.css' %}" rel="stylesheet">
 
     <!-- Colors for this template -->
-    <link href="css/colors.css" rel="stylesheet">
+    <link href="{% static 'blog/css/colors.css' %}" rel="stylesheet">
 
     <!-- Version Food CSS for this template -->
-    <link href="css/version/food.css" rel="stylesheet">
+    <link href="[% static 'blog/css/version/food.css' %}" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -50,7 +50,7 @@
     <div id="wrapper">
         <section id="cta" class="jumbotron text-center">
             <div class="container">
-                <a href="food-index.html"><img src="images/version/food-logo.png" alt="" class="img-fluid"></a>
+                <a href="food-index.html"><img src="{% static 'blog/images/version/food-logo.png' %}" alt="" class="img-fluid"></a>
                 <p>Each year we've hosted the Best Food Blog Awards, we're astounded at the depth, variety, creativity, and ingenuity of the food blogs nominated..</p>
                 <a href="#" class="btn btn-primary">View Recipes</a>
             </div>
