@@ -127,7 +127,7 @@ p {
 }
 
 #cta {
-    background: rgba(0, 0, 0, 0) url(../../upload/cta_01.jpg) no-repeat scroll top center / cover;
+    background: rgba(0, 0, 0, 0) url("https://lekkirepublic.com/wp-content/uploads/2016/09/restaurants.jpeg") no-repeat scroll top center / cover;
     position: relative;
 }
 
