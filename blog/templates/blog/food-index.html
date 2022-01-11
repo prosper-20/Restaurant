@@ -346,7 +346,7 @@
                         <div class="blog-box">
                             <div class="post-media">
                                 <a href="food-single.html" title="">
-                                    <img src="upload/blog_square_09.jpg" alt="" class="img-fluid">
+                                    <img src="{% static 'blog/upload/blog_square_09.jpg' %}" alt="" class="img-fluid">
                                     <div class="hovereffect"></div>
                                 </a>
                             </div><!-- end media -->
@@ -371,7 +371,7 @@
                         <div class="blog-box">
                             <div class="post-media">
                                 <a href="food-single.html" title="">
-                                    <img src="upload/blog_square_06.jpg" alt="" class="img-fluid">
+                                    <img src="{% static 'blog/upload/blog_square_06.jpg' %}" alt="" class="img-fluid">
                                     <div class="hovereffect"></div>
                                 </a>
                             </div><!-- end media -->
@@ -396,7 +396,7 @@
                         <div class="blog-box">
                             <div class="post-media">
                                 <a href="food-single.html" title="">
-                                    <img src="upload/blog_square_07.jpg" alt="" class="img-fluid">
+                                    <img src="{% static 'blog/upload/blog_square_07.jpg' %}" alt="" class="img-fluid">
                                     <div class="hovereffect"></div>
                                 </a>
                             </div><!-- end media -->
@@ -443,7 +443,7 @@
                     <div class="col-lg-8 offset-lg-2">
                         <div class="widget">
                             <div class="footer-text text-center">
-                                <a href="food-index.html"><img src="images/version/food-logo.png" alt="" class="img-fluid"></a>
+                                <a href="food-index.html"><img src="{static 'blog/images/version/food-logo.png' %}" alt="" class="img-fluid"></a>
                                 <p>© 2017 RecipeList Pty Ltd. Trademarks and brands are the property<br>of their respective owners. </p>
                                 <div class="social">
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
@@ -472,10 +472,10 @@
 
     <!-- Core JavaScript
     ================================================== -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/tether.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="{% static 'blog/js/jquery.min.js'%}"></script>
+    <script src="{% static 'blog/js/tether.min.js'%}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/custom.js' %}"></script>
 
 </body>
 </html>
