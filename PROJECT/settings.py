@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'restaurant',
     'Order',
+    'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'django_countries',
     'stripe'

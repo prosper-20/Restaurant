@@ -29,6 +29,7 @@ from Order.views import dentist_view, reservation_view, appointment
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("Core.urls")),
+    path('blog/', include('blog.urls')),
     path('order/', include("Order.urls")),
     path('accounts/', include('allauth.urls')),
     path('home-page/', views.home_page, name="home_page"),
