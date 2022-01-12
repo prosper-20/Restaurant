@@ -9,4 +9,4 @@ def blog_home(request):
     context = {
         "items": items,
     }
-    return render(request, "blog/food-index.html", context)
+    return render(request, "blog/index.html", context)

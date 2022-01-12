@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Site Metas -->
-    <title>RecipeList - Stylish Magazine Blog Template</title>
+    <title>Restaurant Blog</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -92,13 +92,14 @@
         <section class="section lb text-muted">
             <div class="container">
                 <div class="row grid-style">
+                    {% for item in items %}
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        {% for item in items %}
                         <div class="blog-box">
                             <div class="post-media">
                                 <a href="food-single.html" title="">    
-                                    <span class="detail veg">Veg</span>
-                                    <img src="{% static 'blog/upload/blog_square_10.jpg' %}" alt="" class="img-fluid">
+                                    <span class="detail veg">{{ item.get_category_display }}</span>
+                                    <!-- <img src="{% static 'blog/upload/blog_square_10.jpg' %}" alt="" class="img-fluid"> -->
+                                    <img src="{{ item.image.url }}" alt="" class="img-fluid">
                                     <div class="hovereffect"></div>
                                 </a>
                             </div><!-- end media -->
@@ -111,14 +112,16 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <h4><a href="food-single.html" title="">Eggplant meat broth</a></h4>
-                                <p>Aenean interdum arcu blandit, vehicula magna non, placerat et pharetratortor.</p>
+                                <h4><a href="food-single.html" title="">{{ item.title }}</a></h4>
+                                <p>{{ item.description }}</p>
                                 <small><a href="food-single.html" title="">18 July, 2017</a></small>
                                 <small><a href="#" title="">by Matilda</a></small>
                             </div><!-- end meta -->
                         </div><!-- end blog-box -->
                     </div><!-- end col -->
                     {% endfor %}
+                    
+                    
 
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <div class="blog-box">
