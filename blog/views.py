@@ -5,7 +5,7 @@ from Order.models import Item
 
 
 def blog_home(request):
-    items = Item.objects.all()[1:3]
+    items = Item.objects.all()[0:10]
     context = {
         "items": items,
     }

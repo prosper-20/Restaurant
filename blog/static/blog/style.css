@@ -99,6 +99,13 @@ h6 {
     margin-bottom: 11px
 }
 
+
+.diner {
+    color: #00B6F1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
 a {
     color: #111111;
 }
@@ -679,7 +686,7 @@ div.tab button:hover {
 
 .dmtop {
     background-color: #111111;
-    background-image: url(images/arrow.png);
+    background-image: url(/blog/static/blog/images/arrow.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     z-index: 9999;
