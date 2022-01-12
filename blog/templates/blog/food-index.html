@@ -89,6 +89,7 @@
             </div><!-- end container -->
         </header><!-- end header -->
 
+        {% for item in items %}
         <section class="section lb text-muted">
             <div class="container">
                 <div class="row grid-style">
@@ -96,8 +97,32 @@
                         <div class="blog-box">
                             <div class="post-media">
                                 <a href="food-single.html" title="">    
-                                    <span class="detail veg">Veg</span>
-                                    <img src="{% static 'blog/upload/blog_square_10.jpg' %}" alt="" class="img-fluid">
+                                    <span class="detail veg">{{ item.get_category_display }}</span>
+                                    <!-- <img src="{% static 'blog/upload/blog_square_10.jpg' %}" alt="" class="img-fluid"> -->
+                                    <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                    <div class="hovereffect"></div>
+                                </a>
+                            </div><!-- end media -->
+
+                            <div class="blog-meta big-meta">
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                           3     </div>
+                                <h4><a href="food-single.html" title="">{{ item.title }}</a></h4>
+                                <p>{{ item.description }}</p>
+                                <small><a href="food-single.html" title="">18 July, 2017</a></small>
+                                <small><a href="#" title="">by Matilda</a></small>
+                            </div><!-- end meta -->
+                        </div><!-- end blog-box -->
+
+                        <div class="blog-box">
+                            <div class="post-media">
+                                <a href="food-single.html" title="">
+                                    <img src="{% static 'blog/upload/blog_square_12.jpg' %}" alt="" class="img-fluid">
                                     <div class="hovereffect"></div>
                                 </a>
                             </div><!-- end media -->
@@ -110,13 +135,29 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <h4><a href="food-single.html" title="">Eggplant meat broth</a></h4>
-                                <p>Aenean interdum arcu blandit, vehicula magna non, placerat et pharetratortor.</p>
-                                <small><a href="food-single.html" title="">18 July, 2017</a></small>
+                                <h4><a href="food-single.html" title="">Vegetable rice recipe</a></h4>
+                                <p>Vhicula magna non, placerat elit. Mauris et pharetratortor sodales urna.</p>
+                                <small><a href="food-single.html" title="">16 July, 2017</a></small>
                                 <small><a href="#" title="">by Matilda</a></small>
                             </div><!-- end meta -->
                         </div><!-- end blog-box -->
+
                     </div><!-- end col -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <div class="blog-box">
