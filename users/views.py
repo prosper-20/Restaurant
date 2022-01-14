@@ -9,6 +9,7 @@ from django.core.mail import EmailMessage, send_mail
 from sendgrid.helpers.mail import SandBoxMode, MailSettings
 
 
+
 def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
