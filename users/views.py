@@ -9,7 +9,6 @@ from django.core.mail import EmailMessage, send_mail
 from sendgrid.helpers.mail import SandBoxMode, MailSettings
 
 
-
 def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
@@ -38,6 +37,8 @@ def register1(request):
             user = User.objects.create_user(
                 username=username, password=password, email=email)
             mydict = {'username': username}
+            mail_settings = MailSettings()
+            mail_settings.sandbox_mode = SandBoxMode(False)
             user.save()
             html_template = 'users/index.html'
             html_message = render_to_string(html_template, context=mydict)
@@ -48,9 +49,10 @@ def register1(request):
                                    email_from, recipient_list)
             message.content_subtype = 'html'
             message.send()
+            messages.success(request, f'Account created for {username}! You can now login')
             return redirect("/")
     else:
-        return render(request, 'register.html')
+        return render(request, 'users/register.html')
 
 
 
