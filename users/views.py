@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.core.mail import EmailMessage, send_mail
 
 
 def register(request):
