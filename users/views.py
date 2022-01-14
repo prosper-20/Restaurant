@@ -53,7 +53,7 @@ def register1(request):
             messages.success(request, f'Account created for {username}! You can now login')
             return redirect("/")
     else:
-        return render(request, 'users/register.html')
+        return render(request, 'users/register1.html')
 
 
 
