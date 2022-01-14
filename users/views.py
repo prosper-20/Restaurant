@@ -17,7 +17,7 @@ def register(request):
         form = UserRegisterForm()
     return render(request, "users/register.html", {"form": form})
 
-def register(request):
+def register1(request):
     if request.method == 'POST':
         email = request.POST['email']
         username = request.POST['username']
@@ -36,14 +36,14 @@ def register(request):
             user.save()
             html_template = 'register_email.html'
             html_message = render_to_string(html_template, context=mydict)
-            subject = 'Welcome to Service-Verse'
+            subject = "Welcome to P's Diner"
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [email]
             message = EmailMessage(subject, html_message,
-                                   email_from, recipient_list)
+                                   email_from, recipient_list)e
             message.content_subtype = 'html'
             message.send()
-            return redirect("success")
+            return redirect("/")
     else:
         return render(request, 'register.html')
 
