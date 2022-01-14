@@ -4,6 +4,9 @@ from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.mail import EmailMessage, send_mail
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage, send_mail
+from sendgrid.helpers.mail import SandBoxMode, MailSettings
 
 
 def register(request):
@@ -35,13 +38,13 @@ def register1(request):
                 username=username, password=password, email=email)
             mydict = {'username': username}
             user.save()
-            html_template = 'register_email.html'
+            html_template = 'users/index.html'
             html_message = render_to_string(html_template, context=mydict)
-            subject = "Welcome to P's Diner"
+            subject = "P's Diner"
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [email]
             message = EmailMessage(subject, html_message,
-                                   email_from, recipient_list)e
+                                   email_from, recipient_list)
             message.content_subtype = 'html'
             message.send()
             return redirect("/")
