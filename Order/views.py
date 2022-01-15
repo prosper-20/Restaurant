@@ -412,9 +412,9 @@ class PaymentView(LoginRequiredMixin,View):
             # YOU ADDED THESE IN ORDER TO SEND AN EMAIL TO CONFIRM THE ORDER
             mail_settings = MailSettings()
             mail_settings.sandbox_mode = SandBoxMode(False)
-            user = User.objects.get(username=payment.user.username)
+            user = self.request.user
             email = user.email
-            mydict = {"username": user}
+            mydict = {"username": user.username}
             html_template = 'restaurant/confirmation.html'
             html_message = render_to_string(html_template, context=mydict)
             subject = "P's Diner"
