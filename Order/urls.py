@@ -13,6 +13,7 @@ from .views import (
     maincourse_view,
     appetizers_view,
     desserts_view,
+    NewConfirmationView,
 )
 from . import views
 
@@ -32,5 +33,6 @@ urlpatterns = [
     path('maincourse/', views.maincourse_view, name="main_course"),
     path('appetizers/', views.appetizers_view, name="appetizers"),
     path('desserts/', views.desserts_view, name="desserts"),
+    path('new-confirm/', NewConfirmationView.as_view(), name="new"),
 
 ]

@@ -236,15 +236,17 @@
                                                                                             <tbody>
                                                                                                 <tr>
                                                                                                     <td style="font-size: 14px; line-height: 150%;">Order #:</td>
-                                                                                                    <td><strong><span style="font-size: 14px; line-height: 150%;">9844523</span></strong></td>
+                                                                                                    <!-- <td><strong><span style="font-size: 14px; line-height: 150%;">9844523</span></strong></td> -->
+                                                                                                    <td><strong><span style="font-size: 14px; line-height: 150%;">{{ order.ref_code }}</span></strong></td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td style="font-size: 14px; line-height: 150%;">Order Date:</td>
-                                                                                                    <td><strong><span style="font-size: 14px; line-height: 150%;">May&nbsp;21, 2019</span></strong></td>
+                                                                                                    <!-- <td><strong><span style="font-size: 14px; line-height: 150%;">May&nbsp;21, 2019</span></strong></td> -->
+                                                                                                    <td><strong><span style="font-size: 14px; line-height: 150%;">{{ order.ordered_date }}</span></strong></td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td style="font-size: 14px; line-height: 150%;">Order Total:</td>
-                                                                                                    <td><strong><span style="font-size: 14px; line-height: 150%;">$22.00</span></strong></td>
+                                                                                                    <td><strong><span style="font-size: 14px; line-height: 150%;">${{ order.get_total }}</span></strong></td>
                                                                                                 </tr>
                                                                                             </tbody>
                                                                                         </table>
