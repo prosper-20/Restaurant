@@ -16,6 +16,10 @@ from django.conf import settings
 import random
 import string 
 
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage, send_mail
+from sendgrid.helpers.mail import SandBoxMode, MailSettings
+
 
 def create_ref_code():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
@@ -403,6 +407,20 @@ class PaymentView(LoginRequiredMixin,View):
             order.payment = payment
             order.ref_code = create_ref_code()
             order.save()
+
+            # YOU ADDED THESE IN ORDER TO SEND AN EMAIL TO CONFIRM THE ORDER
+            mail_settings = MailSettings()
+            mail_settings.sandbox_mode = SandBoxMode(False)
+            user.save()
+            html_template = 'users/index.html'
+            html_message = render_to_string(html_template, context=mydict)
+            subject = "P's Diner"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            message = EmailMessage(subject, html_message,
+                                   email_from, recipient_list)
+            message.content_subtype = 'html'
+            message.send()
 
             messages.success(self.request, "Your order was successful!")
             return redirect("item_list")
