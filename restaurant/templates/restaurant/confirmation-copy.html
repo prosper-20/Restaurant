@@ -326,7 +326,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text es-p10t es-m-txt-l">
-                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong>Sports Menu</strong></h3>
+                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong>{{ order.get_category_display }}</strong></h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -337,12 +337,12 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text es-p10t es-m-txt-l">
-                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Qty:</span>&nbsp;1</strong></h3>
+                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Qty:</span>&nbsp;{{ order.quantity }}</strong></h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text es-p10t es-m-txt-l">
-                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Price:</span>&nbsp;$12.00</strong></h3>
+                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Price:</span>&nbsp;${{ order_item.item.price }}</strong></h3>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -381,7 +381,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text es-p10t es-m-txt-l">
-                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong>Smart Lunch</strong></h3>
+                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong>{{ order.get_category_display }}</strong></h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -391,12 +391,12 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text es-p10t es-m-txt-l">
-                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Qty:</span>&nbsp;1</strong></h3>
+                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Qty:</span>&nbsp;{{ order_item.quantity }}</strong></h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text es-p10t es-m-txt-l">
-                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Price:</span>&nbsp;$10.00</strong></h3>
+                                                                                        <h3 style="color: #659c35; font-size: 19px;"><strong><span style="color:#000000;">Price:</span>&nbsp;${{ order_item.item.price }}</strong></h3>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
