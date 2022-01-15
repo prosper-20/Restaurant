@@ -15,6 +15,7 @@ import stripe
 from django.conf import settings
 import random
 import string 
+from django.contrib.auth.models import User
 
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage, send_mail
@@ -411,8 +412,10 @@ class PaymentView(LoginRequiredMixin,View):
             # YOU ADDED THESE IN ORDER TO SEND AN EMAIL TO CONFIRM THE ORDER
             mail_settings = MailSettings()
             mail_settings.sandbox_mode = SandBoxMode(False)
-            user.save()
-            html_template = 'users/index.html'
+            user = User.objects.get(username=payment.user.username)
+            email = user.email
+            mydict = {"username": user}
+            html_template = 'restaurant/confirmation.html'
             html_message = render_to_string(html_template, context=mydict)
             subject = "P's Diner"
             email_from = settings.EMAIL_HOST_USER
