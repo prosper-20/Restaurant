@@ -398,7 +398,6 @@ class PaymentView(LoginRequiredMixin,View):
             payment.amount = order.get_total()
             payment.save()
 
-            
 
             # assign the payment to the order
 
@@ -412,20 +411,7 @@ class PaymentView(LoginRequiredMixin,View):
             order.ref_code = create_ref_code()
             order.save()
 
-            # YOU ADDED THESE IN ORDER TO SEND AN EMAIL TO CONFIRM THE ORDER
-            mail_settings = MailSettings()
-            mail_settings.sandbox_mode = SandBoxMode(False)
-            # html_template = 'restaurant/confirmation-copy.html'
-            html_template = 'restaurant/new_index.html'
-            html_message = render_to_string(html_template)
-            subject = "P's Diner"
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [customer.email]
-            message = EmailMessage(subject, html_message,
-                                   email_from, recipient_list)
-            message.content_subtype = 'html'
-            message.send()
-            messages.success(self.request, f"{payment.user.username} - {payment.user.email}")
+            
             messages.success(self.request, "Your order was successful!")
             return redirect("item_list")
         except stripe.error.CardError as e:
