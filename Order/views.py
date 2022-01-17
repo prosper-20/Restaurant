@@ -15,6 +15,7 @@ import stripe
 from django.conf import settings
 import random
 import string 
+from sendgrid import SendGridAPIClient
 from django.contrib.auth.models import User
 
 from django.template.loader import render_to_string
@@ -412,10 +413,10 @@ class PaymentView(LoginRequiredMixin,View):
             # YOU ADDED THESE IN ORDER TO SEND AN EMAIL TO CONFIRM THE ORDER
             mail_settings = MailSettings()
             mail_settings.sandbox_mode = SandBoxMode(False)
-            user = self.request.user
-            email = user.email
-            mydict = {"username": user.username}
-            html_template = 'restaurant/confirmation.html'
+            user = Order.user.username
+            email = Order.user.email
+            mydict = {"username": user}
+            html_template = 'restaurant/confirmation-copy.html'
             html_message = render_to_string(html_template, context=mydict)
             subject = "P's Diner"
             email_from = settings.EMAIL_HOST_USER
@@ -424,6 +425,8 @@ class PaymentView(LoginRequiredMixin,View):
                                    email_from, recipient_list)
             message.content_subtype = 'html'
             message.send()
+            print(user)
+            print(email)
 
             messages.success(self.request, "Your order was successful!")
             return redirect("item_list")
