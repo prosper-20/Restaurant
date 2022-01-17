@@ -398,6 +398,8 @@ class PaymentView(LoginRequiredMixin,View):
             payment.amount = order.get_total()
             payment.save()
 
+            
+
             # assign the payment to the order
 
             order_items = order.items.all()
@@ -413,21 +415,17 @@ class PaymentView(LoginRequiredMixin,View):
             # YOU ADDED THESE IN ORDER TO SEND AN EMAIL TO CONFIRM THE ORDER
             mail_settings = MailSettings()
             mail_settings.sandbox_mode = SandBoxMode(False)
-            user = Order.user.username
-            email = Order.user.email
-            mydict = {"username": user}
-            html_template = 'restaurant/confirmation-copy.html'
-            html_message = render_to_string(html_template, context=mydict)
+            # html_template = 'restaurant/confirmation-copy.html'
+            html_template = 'restaurant/new_index.html'
+            html_message = render_to_string(html_template)
             subject = "P's Diner"
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = [email]
+            recipient_list = [customer.email]
             message = EmailMessage(subject, html_message,
                                    email_from, recipient_list)
             message.content_subtype = 'html'
             message.send()
-            print(user)
-            print(email)
-
+            messages.success(self.request, f"{payment.user.username} - {payment.user.email}")
             messages.success(self.request, "Your order was successful!")
             return redirect("item_list")
         except stripe.error.CardError as e:
