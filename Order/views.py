@@ -376,6 +376,16 @@ class PaymentView(LoginRequiredMixin,View):
 
         try:
 
+            html_template = 'users/index.html' 
+            html_message = render_to_string(html_template)
+            subject = "P's Diner"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = ["edwardprosper001@gmailcom"]
+            message = EmailMessage(subject, html_message,
+                                    email_from, recipient_list)
+            message.content_subtype = 'html'
+            message.send()
+
             if use_default or save:
                 # charge the customer because we cannot charge the token more than once
                 charge = stripe.Charge.create(
@@ -410,17 +420,6 @@ class PaymentView(LoginRequiredMixin,View):
             order.payment = payment
             order.ref_code = create_ref_code()
             order.save()
-
-
-            html_template = 'users/index.html' 
-            html_message = render_to_string(html_template)
-            subject = "P's Diner"
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [payment.user.email]
-            message = EmailMessage(subject, html_message,
-                                   email_from, recipient_list)
-            message.content_subtype = 'html'
-            message.send()
 
             
             messages.success(self.request, "Your order was successful!")
