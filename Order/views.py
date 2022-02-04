@@ -577,12 +577,20 @@ def appointment(request):
         your_time = request.POST['your-time']
         your_message = request.POST['your-message']
 
-        send_mail(
-            "Appointment Confirmation",
-            "God is good",
-            "edwardprosper001@gmail.com",
-            ['your_email']
-        )
+        html_message = "It worked"
+        subject = "Appointment Confirmation"
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [your_email]
+        message = EmailMessage(subject, html_message,
+                                email_from, recipient_list)
+        message.content_subtype = "html"
+        message.send()
+        # send_mail(
+        #     "Appointment Confirmation",
+        #     "God is good",
+        #     "edwardprosper001@gmail.com",
+        #     ['your_email']
+        # )
     
         messages.success(request, f"Hi {your_name}, your reservation has been placed. Kindly Click On the Link in your mail to confrim your reservation.")
         return render(request, 'Order/appointment.html', {
