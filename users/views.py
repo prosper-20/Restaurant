@@ -51,7 +51,7 @@ def register1(request):
             message.content_subtype = 'html'
             message.send()
             messages.success(request, f'Account created for {username}! You can now login')
-            return redirect("/")
+            return redirect("login")
     else:
         return render(request, 'users/register1.html')
 
