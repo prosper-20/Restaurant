@@ -355,7 +355,10 @@ class PaymentView(LoginRequiredMixin,View):
             token = form.cleaned_data.get('stripeToken')
             save = form.cleaned_data.get('save')
             use_default = form.cleaned_data.get('use_default')
-            html_message = "It worked"
+
+            # This is for sending the mail
+            html_template = 'restaurant/confirmation-copy.html'
+            html_message = render_to_string(html_template)
             subject = "Order Confirmation"
             email_from = settings.EMAIL_HOST_USER
             recipient_list = ["edwardprosper001@gmail.com"]
