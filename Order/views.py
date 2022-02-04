@@ -355,6 +355,14 @@ class PaymentView(LoginRequiredMixin,View):
             token = form.cleaned_data.get('stripeToken')
             save = form.cleaned_data.get('save')
             use_default = form.cleaned_data.get('use_default')
+            html_message = "It worked"
+            subject = "Order Confirmation"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = ["edwardprosper001@gmail.com"]
+            message = EmailMessage(subject, html_message,
+                                email_from, recipient_list)
+            message.content_subtype = "html"
+            message.send()
 
             if save:
                 if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
@@ -375,16 +383,6 @@ class PaymentView(LoginRequiredMixin,View):
     
 
         try:
-
-            html_template = 'users/index.html' 
-            html_message = render_to_string(html_template)
-            subject = "P's Diner"
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = ["edwardprosper001@gmailcom"]
-            message = EmailMessage(subject, html_message,
-                                    email_from, recipient_list)
-            message.content_subtype = 'html'
-            message.send()
 
             if use_default or save:
                 # charge the customer because we cannot charge the token more than once
