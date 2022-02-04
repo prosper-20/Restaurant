@@ -581,7 +581,7 @@ def appointment(request):
             "Appointment Confirmation",
             "God is good",
             "edwardprosper001@gmail.com",
-            your_email,
+            ['your_email']
         )
     
         messages.success(request, f"Hi {your_name}, your reservation has been placed. Kindly Click On the Link in your mail to confrim your reservation.")
