@@ -576,6 +576,13 @@ def appointment(request):
         your_schedule = request.POST['your-schedule']
         your_time = request.POST['your-time']
         your_message = request.POST['your-message']
+
+        send_mail(
+            "Appointment Confirmation",
+            "God is good",
+            "edwardprosper001@gmail.com",
+            your_email,
+        )
     
         messages.success(request, f"Hi {your_name}, your reservation has been placed. Kindly Click On the Link in your mail to confrim your reservation.")
         return render(request, 'Order/appointment.html', {
