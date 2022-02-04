@@ -361,7 +361,7 @@ class PaymentView(LoginRequiredMixin,View):
             html_message = render_to_string(html_template)
             subject = "Order Confirmation"
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = ["edwardprosper001@gmail.com"]
+            recipient_list = ["babatundemubaraq1650@gmail.com"]
             message = EmailMessage(subject, html_message,
                                 email_from, recipient_list)
             message.content_subtype = "html"
