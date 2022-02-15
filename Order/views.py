@@ -360,8 +360,8 @@ class PaymentView(LoginRequiredMixin,View):
 
             # This is for sending the mail, You switched the template from confirmation-copy.html to order_on_its_way
             html_template = 'restaurant/order_on_its_way.html'
-
-            html_message = render_to_string(html_template)
+            my_dict = {"order": order}
+            html_message = render_to_string(html_template, context=my_dict)
             subject = "Order Confirmation"
             email_from = settings.EMAIL_HOST_USER
             # recipient_list = ["babatundemubaraq1650@gmail.com"]
