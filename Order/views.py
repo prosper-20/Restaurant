@@ -370,8 +370,8 @@ class PaymentView(LoginRequiredMixin,View):
                                 email_from, recipient_list)
             message.content_subtype = "html"
             message.send()
-        # Added this
-        return post_mail
+            # Added this
+            return post_mail
 
             if save:
                 if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
