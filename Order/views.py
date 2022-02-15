@@ -350,7 +350,7 @@ class PaymentView(LoginRequiredMixin,View):
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
         # You added this
-        post_mail = order.email
+        post_mail = order.user.email
         form = PaymentForm(self.request.POST)
         userprofile = UserProfile.objects.get(user=self.request.user)
         if form.is_valid():
@@ -358,12 +358,14 @@ class PaymentView(LoginRequiredMixin,View):
             save = form.cleaned_data.get('save')
             use_default = form.cleaned_data.get('use_default')
 
-            # This is for sending the mail
+            # This is for sending the mail, You switched the template from confirmation-copy.html to 
             html_template = 'restaurant/confirmation-copy.html'
+
             html_message = render_to_string(html_template)
             subject = "Order Confirmation"
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = ["babatundemubaraq1650@gmail.com"]
+            # recipient_list = ["babatundemubaraq1650@gmail.com"]
+            recipient_list = [post_mail]
             message = EmailMessage(subject, html_message,
                                 email_from, recipient_list)
             message.content_subtype = "html"
