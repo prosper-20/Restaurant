@@ -358,8 +358,8 @@ class PaymentView(LoginRequiredMixin,View):
             save = form.cleaned_data.get('save')
             use_default = form.cleaned_data.get('use_default')
 
-            # This is for sending the mail, You switched the template from confirmation-copy.html to 
-            html_template = 'restaurant/confirmation-copy.html'
+            # This is for sending the mail, You switched the template from confirmation-copy.html to order_on_its_way
+            html_template = 'restaurant/order_on_its_way.html'
 
             html_message = render_to_string(html_template)
             subject = "Order Confirmation"
@@ -370,6 +370,8 @@ class PaymentView(LoginRequiredMixin,View):
                                 email_from, recipient_list)
             message.content_subtype = "html"
             message.send()
+        # Added this
+        return post_mail
 
             if save:
                 if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
