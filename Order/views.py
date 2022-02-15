@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.expressions import Ref
 from django.shortcuts import redirect, reverse, render, get_object_or_404
 from stripe.api_resources import order
-from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
+from Order.models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
@@ -370,6 +370,11 @@ class PaymentView(LoginRequiredMixin,View):
                                 email_from, recipient_list)
             message.content_subtype = "html"
             message.send()
+            
+            for order_item in order.items.all:
+                order_item.get_total_item_price
+                order_item.item.title
+
 
             if save:
                 if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
