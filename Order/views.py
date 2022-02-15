@@ -349,6 +349,8 @@ class PaymentView(LoginRequiredMixin,View):
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
+        # You added this
+        post_mail = order.email
         form = PaymentForm(self.request.POST)
         userprofile = UserProfile.objects.get(user=self.request.user)
         if form.is_valid():
