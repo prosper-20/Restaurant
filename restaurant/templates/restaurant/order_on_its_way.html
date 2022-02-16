@@ -263,6 +263,7 @@ a[x-apple-data-detectors='true'] {
     <div>
     {% for order_item in order.items.all %}
     <p style="color: #ffffff;">{{order_item.item.title}}</p>
+    <br>
     {% endfor %}
     </div>
   </div>
@@ -291,6 +292,7 @@ a[x-apple-data-detectors='true'] {
     <div>
     {% for order_item in order.items.all %}
     <p style="color: #ffffff">{{ order_item.quantity }}</p>
+    <br>
     {% endfor %}
     </div>
   </div>
@@ -318,6 +320,7 @@ a[x-apple-data-detectors='true'] {
     <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Price</strong></span></p>
     {% for order_item in order.items.all %}
     <p>{{ order_item.get_total_item_price }}</p>
+    <br>
     {% endfor %}
   </div>
 
