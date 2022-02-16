@@ -371,10 +371,9 @@ class PaymentView(LoginRequiredMixin,View):
             message.content_subtype = "html"
             message.send()
             
-            for order_item in order.items.all:
-                order_item.get_total_item_price
-                order_item.item.title
-
+            # for order_item in order.items.all:
+            #     order_item.get_total_item_price
+            #     order_item.item.title
 
             if save:
                 if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
