@@ -260,7 +260,7 @@ a[x-apple-data-detectors='true'] {
   <div style="color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Product</strong></span></p>
     <!-- You added this for the list of products -->
-    {% for order_item in object.items.all %}
+    {% for order_item in order.items.all %}
     <p style="color: red;">{{order_item.item.title}}</p>
     {% endfor %}
   </div>
@@ -312,7 +312,7 @@ a[x-apple-data-detectors='true'] {
         
   <div style="color: #ffffff; line-height: 140%; text-align: right; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Price</strong></span></p>
-    {% for order_item in object.items.all %}
+    {% for order_item in order.items.all %}
     <p>{{ order_item.get_total_item_price }}</p>
     {% endfor %}
   </div>
