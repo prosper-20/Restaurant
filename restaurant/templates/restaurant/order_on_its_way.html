@@ -610,7 +610,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:6px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <h3 style="margin: 0px; color: #000000; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 15px;">
-    {{order.billing_address}}
+    {{ order.billing_address.street_address }}
   </h3>
 
       </td>
@@ -647,7 +647,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:6px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <h3 style="margin: 0px; color: #000000; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 15px;">
-    {{order.shipping_address}}
+    {{ order.shipping_address.street_address }}
   </h3>
 
       </td>
