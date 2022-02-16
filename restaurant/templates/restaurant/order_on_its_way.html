@@ -260,9 +260,11 @@ a[x-apple-data-detectors='true'] {
   <div style="color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Product</strong></span></p>
     <!-- You added this for the list of products -->
+    <div>
     {% for order_item in order.items.all %}
-    <p style="color: red;">{{order_item.item.title}}</p>
+    <p style="color: #ffffff;">{{order_item.item.title}}</p>
     {% endfor %}
+    </div>
   </div>
 
       </td>
@@ -286,9 +288,11 @@ a[x-apple-data-detectors='true'] {
         
   <div style="color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Qty</strong></span></p>
-    {% for items in Order %}
+    <div>
+    {% for order_item in object.items.all %}
     <p>{{ order_item.quantity }}</p>
     {% endfor %}
+    </div>
   </div>
 
       </td>
@@ -529,7 +533,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%; text-align: right;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Total amount:</strong></span></p>
+    <p style="font-size: 14px; line-height: 140%; text-align: right;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Total amount: {{ order_item.get_total_item_price }}</strong></span></p>
   </div>
 
       </td>
