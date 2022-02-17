@@ -321,6 +321,9 @@ a[x-apple-data-detectors='true'] {
     {% for order_item in order.items.all %}
     <p>{{ order_item.get_total_item_price }}</p>
     <br>
+      {% if order.coupon %}
+        <p>{{ order.coupon.amount }}</p>
+      {% endif %}
     {% endfor %}
   </div>
 
