@@ -203,7 +203,6 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 10px 20px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-    {% for order_item in order.items.all %}
     <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="color: #000000; font-size: 14px; line-height: 19.6px;"><span style="font-size: 16px; line-height: 22.4px; font-family: arial, helvetica, sans-serif;">This email is to confirm your recent order. </span><span style="font-size: 16px; line-height: 22.4px; font-family: arial, helvetica, sans-serif;"><strong>Order ID: {{order.ref_code}}</strong></span></span></p>
   </div>
 
@@ -538,8 +537,8 @@ a[x-apple-data-detectors='true'] {
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
     {% for order_item in order.items.all %}
-      {% if object.get_total %}
-        <p style="font-size: 14px; line-height: 140%; text-align: right; color: white;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Total amount: ${{ object.get_total }}</strong></span></p>
+      {% if order.get_total %}
+        <p style="font-size: 14px; line-height: 140%; text-align: right; color: white;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Total amount: ${{ order.get_total }}</strong></span></p>
       {% endif %}
     {% endfor %}
   </div>
