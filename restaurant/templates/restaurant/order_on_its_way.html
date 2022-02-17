@@ -538,7 +538,9 @@ a[x-apple-data-detectors='true'] {
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
     {% for order_item in order.items.all %}
-    <p style="font-size: 14px; line-height: 140%; text-align: right; color: white;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Total amount: ${{ order_item.get_total_item_price }}</strong></span></p>
+      {% if object.get_total %}
+        <p style="font-size: 14px; line-height: 140%; text-align: right; color: white;"><span style="font-size: 16px; line-height: 22.4px;"><strong>Total amount: ${{ object.get_total }}</strong></span></p>
+      {% endif %}
     {% endfor %}
   </div>
 
