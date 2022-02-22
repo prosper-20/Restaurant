@@ -467,7 +467,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 10px 15px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%; text-align: right;"><span style="font-size: 16px; line-height: 22.4px;">Shipping:</span></p>
+    <p style="font-size: 14px; line-height: 140%; text-align: right;"><span style="font-size: 16px; line-height: 22.4px;">Shipping:0</span></p>
   </div>
 
       </td>
@@ -548,7 +548,8 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 21px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%; text-align: right;"><span style="font-size: 16px; line-height: 22.4px;"><strong>${{order.total.price}}</strong></span></p>
+    {% if order.get_total %}
+    <p style="font-size: 14px; line-height: 140%; text-align: right;"><span style="font-size: 16px; line-height: 22.4px;"><strong>${{ order.get_total }}</strong></span></p>
   </div>
 
       </td>
@@ -684,7 +685,7 @@ a[x-apple-data-detectors='true'] {
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 14px; line-height: 19.6px;">Many thanks,</span></p>
-<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 14px; line-height: 19.6px;">{{company_name}}</span></p>
+<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 14px; line-height: 19.6px;">P's Diner</span></p>
   </div>
 
       </td>
@@ -734,7 +735,7 @@ a[x-apple-data-detectors='true'] {
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%; text-align: center;">No longer want to receive this emails? {{unsub_link}}</p>
+    <p style="font-size: 14px; line-height: 140%; text-align: center;">No longer want to receive this emails? <a href="https://www.google.com/">Unsubscribe</a></p>
   </div>
 
       </td>
