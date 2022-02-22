@@ -7,11 +7,11 @@ from django.db.models.signals import post_save
 
 
 @receiver(post_save, sender=User)
-def create_profile(sender, instance, created, **kwargs):
+def create_userprofile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
-def save_profile(sender, instance, **kwargs):
+def save_userprofile(sender, instance, **kwargs):
     instance.profile.save()
