@@ -354,7 +354,8 @@ class PaymentView(LoginRequiredMixin,View):
         form = PaymentForm(self.request.POST)
         userprofile = UserProfile.objects.get(user=self.request.user)
         # You still added this
-        new_order = Order.objects.get(id=self.request.user.id)
+        new_order = Order.objects.filter(id=self.request.user.id).last()
+
         if form.is_valid():
             token = form.cleaned_data.get('stripeToken')
             save = form.cleaned_data.get('save')
@@ -362,7 +363,7 @@ class PaymentView(LoginRequiredMixin,View):
 
             # This is for sending the mail, You switched the template from confirmation-copy.html to order_on_its_way
             html_template = 'restaurant/order_on_its_way_2.html'
-            my_dict = {"order": order}
+            my_dict = {"order": order, "new_order": new_order}
             html_message = render_to_string(html_template, context=my_dict)
             subject = "Order Confirmation"
             email_from = settings.EMAIL_HOST_USER
