@@ -359,7 +359,7 @@ class PaymentView(LoginRequiredMixin,View):
             use_default = form.cleaned_data.get('use_default')
 
             # This is for sending the mail, You switched the template from confirmation-copy.html to order_on_its_way
-            html_template = 'restaurant/order_on_its_way.html'
+            html_template = 'restaurant/order_on_its_way_2.html'
             my_dict = {"order": order}
             html_message = render_to_string(html_template, context=my_dict)
             subject = "Order Confirmation"
