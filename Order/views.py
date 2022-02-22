@@ -353,6 +353,8 @@ class PaymentView(LoginRequiredMixin,View):
         post_mail = order.user.email
         form = PaymentForm(self.request.POST)
         userprofile = UserProfile.objects.get(user=self.request.user)
+        # You still added this
+        new_order = Order.objects.get(id=self.request.user.id)
         if form.is_valid():
             token = form.cleaned_data.get('stripeToken')
             save = form.cleaned_data.get('save')
