@@ -15,7 +15,22 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            # You added these for the email sending feature
             username = form.cleaned_data.get("username")
+            email = form.cleaned_data.get("email")
+            mydict = {'username': username}
+            mail_settings = MailSettings()
+            mail_settings.sandbox_mode = SandBoxMode(False)
+            # user.save()
+            html_template = 'users/index.html'
+            html_message = render_to_string(html_template, context=mydict)
+            subject = "P's Diner"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            message = EmailMessage(subject, html_message,
+                                   email_from, recipient_list)
+            message.content_subtype = 'html'
+            message.send()
             messages.success(request, f"Hi {username}, your account has been created successfully! Sign In below")
             return redirect("login")
     else:
