@@ -25,6 +25,7 @@ ADDRESS_CHOICES = (
 )
 
 class UserProfile(models.Model):
+    # You change this from OneToOneField to ForeignKey
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
     # You added null = True
