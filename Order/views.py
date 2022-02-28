@@ -637,6 +637,17 @@ class NewConfirmationView(LoginRequiredMixin, View):
 
 
 
+def search_posts(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        # This returns the results of the user's search
+        posts = Post.objects.filter(title__contains=searched)
+        return render(request, "blog/new_search_posts.html", {'searched': searched, 'posts': posts})
+    else:
+        return render(request, "blog/new_search_posts.html")
+
+
+
 
 
 
