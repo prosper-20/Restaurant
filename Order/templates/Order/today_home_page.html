@@ -176,9 +176,17 @@
           </ul>
           <!-- Links -->
 
-          <form class="form-inline">
+          <!-- <form class="form-inline">
             <div class="md-form my-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </form> -->
+          <form action="{% url 'search_posts' %}" class="form-inline" method="post">
+            {% csrf_token %}
+            <div class="md-form my-0">
+              <input type="search" name="searched" class="form-control me-2"
+                  placeholder="Search posts" aria-label="Search">
+                  <button class="btn btn-outline-info btn-md" type="submit"><i class="fas fa-search" style="color: antiquewhite;"></i></button>
             </div>
           </form>
         </div>

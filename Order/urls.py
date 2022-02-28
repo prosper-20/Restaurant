@@ -14,6 +14,7 @@ from .views import (
     appetizers_view,
     desserts_view,
     NewConfirmationView,
+    search_posts,
 )
 from . import views
 
@@ -34,5 +35,6 @@ urlpatterns = [
     path('appetizers/', views.appetizers_view, name="appetizers"),
     path('desserts/', views.desserts_view, name="desserts"),
     path('new-confirm/', NewConfirmationView.as_view(), name="new"),
+    path('search/', views.search_posts, name="search_posts"),
 
 ]
