@@ -642,9 +642,9 @@ def search_posts(request):
         searched = request.POST['searched']
         # This returns the results of the user's search
         items = Item.objects.filter(title__contains=searched)
-        return render(request, "blog/new_search_posts.html", {'searched': searched, 'items': items})
+        return render(request, "order/new_search_posts.html", {'searched': searched, 'items': items})
     else:
-        return render(request, "blog/new_search_posts.html")
+        return render(request, "order/new_search_posts.html")
 
 
 
