@@ -1,3 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>P'S Diner</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'Core/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/css/bootstrap.min.css' %}">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'Core/css/mdb.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/css/mdb.min..css' %}">
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .view.jarallax {
+      height: 100%;
+      min-height: 100%;
+    }
+  </style>
+</head>
+
+<body class="restaurant-lp">
+
 <!-- YOU APPLIED THIS COMMENT TO USE THE FOOTER OF THE MAIN HOME PAGE -->
 <!-- line 3 -50 is the original footer  -->
 <!-- <footer class="page-footer text-center font-small mt-4 wow fadeIn">
@@ -177,3 +207,47 @@
 
   </footer>
   <!--/Footer-->
+
+  <!-- SCRIPTS -->
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'Core/js/jquery-3.4.0.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/js/jquery-3.4.0.min.js' %}"></script>
+
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/js/popper.min.js' %}"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'Core/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/js/bootstrap.min.js' %}"></script>
+
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'Core/js/mdb.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/js/mdb.min.js' %}"></script>
+
+  <script>
+    //Animation init
+    new WOW().init();
+
+    //Modal
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
+    })
+
+    // Material Select Initialization
+    $(document).ready(function () {
+      $('.mdb-select').material_select();
+    });
+
+    // MDB Lightbox Init
+    $(function () {
+      $("#mdb-lightbox-ui").load("../mdb-addons/mdb-lightbox-ui.html");
+    });
+
+  </script>
+
+</body>
+
+</html>
+
