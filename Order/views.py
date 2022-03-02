@@ -600,7 +600,7 @@ def appointment(request):
             "your_message": your_message,
         }
         html_message = render_to_string(html_template, context= my_dict)
-        subject = "Appointment Confirmation"
+        subject = "Reservation Confirmation"
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [your_email]
         message = EmailMessage(subject, html_message,
