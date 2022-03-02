@@ -584,7 +584,7 @@ def appointment(request):
         your_name = request.POST['your-name']
         your_phone = request.POST['your-phone']
         your_email = request.POST['your-email']
-        your_address = request.POST['your-address']
+        your_date = request.POST['your-date']
         your_schedule = request.POST['your-schedule']
         your_time = request.POST['your-time']
         your_message = request.POST['your-message']
@@ -594,7 +594,7 @@ def appointment(request):
             "your_name": your_name,
             "your_phone": your_phone,
             "your_email": your_email,
-            "your_address": your_address,
+            "your_date": your_date,
             "your_schedule": your_schedule,
             "your_time": your_time,
             "your_message": your_message,
@@ -619,7 +619,7 @@ def appointment(request):
         "your_name": your_name,
         "your_phone": your_phone,
         "your_email": your_email,
-        "your_address": your_address,
+        "your_date": your_date,
         "your_schedule": your_schedule,
         "your_time": your_time,
         "your_message": your_message,
