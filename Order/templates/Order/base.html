@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   <link href="{% static 'Order/css/mdb.min.css' %}" rel="stylesheet">
   <link href="{% static 'Order/css/style.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'Core/main.css' %}">
+  <link rel="stylesheet" href="{% static 'Core/main_1.css' %}">
   <link rel="stylesheet" href="{% static 'Core/style.css' %}">
   <style type="text/css">
     html,
@@ -88,13 +88,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect blue-text" href="{% url 'account_logout' %}">
+            <a class="nav-link waves-effect blue-text" href="{% url 'logout' %}">
               <span class="clearfix d-none d-sm-inline-block blue-text">Logout</span>
             </a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link waves-effect blue-text" href="{% url 'account_login' %}">
+            <a class="nav-link waves-effect blue-text" href="{% url 'login' %}">
               <span class="clearfix d-none d-sm-inline-block"> Login</span>
             </a>
           </li>
