@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.expressions import Ref
 from django.shortcuts import redirect, reverse, render, get_object_or_404
 from stripe.api_resources import order
-from Order.models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
+from Order.models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile, ItemImage
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.views.generic import View
@@ -61,7 +61,9 @@ class OrderSummaryView(LoginRequiredMixin, View):
 
 class ItemDetailView(DetailView):
     model = Item
-    template_name = 'Order/product-page.html'
+    photos = ItemImage.objects.all()
+    context = {"photos": photos}
+    template_name = 'Order/product-page.html', context
 
 @login_required
 def add_to_cart(request, slug):
