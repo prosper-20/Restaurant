@@ -40,7 +40,7 @@ class HomeView(ListView):
     model = Item
     context_object_name = "items"
     template_name = 'Order/today_home_page.html'
-    paginate_by = 12
+    paginate_by = 100
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
