@@ -77,7 +77,7 @@ class ItemImage(models.Model):
     images = models.FileField(upload_to="other_pics")
 
     def __str__(self):
-        return self.item.title
+        return self.my_item.title
 
 
 
