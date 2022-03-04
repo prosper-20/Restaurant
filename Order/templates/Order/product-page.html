@@ -16,6 +16,22 @@
   <link href="{% static 'Order/css/mdb.min.css' %}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="{% static 'Order/css/style.min.css' %}" rel="stylesheet">
+  <!-- YOU ADDED THESE FOR THE MULTIPLE ITEM CAROUSEL -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'Order/assets/css/animate.css' %}">
+      <link rel="stylesheet" href="{% static 'Order/assets/css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'Order/assets/css/media-queries.css' %}">
+      <link rel="stylesheet" href="{% static 'Order/assets/css/carousel.css' %}">
+
+      <!-- Favicon and touch icons -->
+      <link rel="shortcut icon" href="{% static 'Order/assets/ico/favicon.png' %}">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'Order/assets/ico/apple-touch-icon-144-precomposed.png' %}">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'Order/assets/ico/apple-touch-icon-114-precomposed.png' %}">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'Order/assets/ico/apple-touch-icon-72-precomposed.png' %}">
+      <link rel="apple-touch-icon-precomposed" href="{% static 'Order/assets/ico/apple-touch-icon-57-precomposed.png' %}">
 </head>
 
 <body>
@@ -188,41 +204,23 @@
       <!--Grid row-->
 
       <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        {% for p in photos %}
-        <div class="col-lg-4 col-md-12 mb-4">
-          <!--Card-->
-          <div class="card">
-
-            <!--Card image-->
-            <div class="view overlay">
-              <img src="{{ p.images.url }}" alt="">
-              <a href="{{ item.get_absolute_url }}">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-          <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt=""> -->
-
-        </div>
-        {% endfor %}
+     
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <!-- <div class="col-lg-4 col-md-6 mb-4">
 
           <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
 
-        </div>
+        </div> -->
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <!-- <div class="col-lg-4 col-md-6 mb-4">
 
           <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
 
-        </div>
+        </div> -->
         <!--Grid column-->
 
       </div>
