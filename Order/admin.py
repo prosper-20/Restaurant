@@ -56,14 +56,14 @@ class AddressAdmin(admin.ModelAdmin):
 
 admin.site.register(OrderItem)
 admin.site.register(Order, OrderAdmin)
-admin.site.register(Item)
+# admin.site.register(Item)
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Coupon)
 admin.site.register(Payment)
 admin.site.register(Refund)
 admin.site.register(UserProfile)
 admin.site.register(Category)
-admin.site.register(ItemImage)
+# admin.site.register(ItemImage)
 
 
 class ItemImageAdmin(admin.StackedInline):
