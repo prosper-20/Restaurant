@@ -191,11 +191,13 @@
       <div class="row wow fadeIn">
 
         <!--Grid column-->
+        {% for p in photos %}
         <div class="col-lg-4 col-md-12 mb-4">
-
+          <img src="{{ p.images.url }}" alt="">
           <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
 
         </div>
+        {% endfor %}
         <!--Grid column-->
 
         <!--Grid column-->

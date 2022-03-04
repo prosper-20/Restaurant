@@ -62,8 +62,9 @@ class OrderSummaryView(LoginRequiredMixin, View):
 class ItemDetailView(DetailView):
     model = Item
     photos = ItemImage.objects.all()
-    context = {"photos": photos}
-    template_name = 'Order/product-page.html', context
+    # context = {"photos": photos}
+    template_name = 'Order/product-page.html'
+    extra_context={'photos': ItemImage.objects.all()}
 
 @login_required
 def add_to_cart(request, slug):
