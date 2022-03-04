@@ -64,3 +64,18 @@ admin.site.register(Refund)
 admin.site.register(UserProfile)
 admin.site.register(Category)
 admin.site.register(ItemImage)
+
+
+class ItemImageAdmin(admin.StackedInline):
+    model = ItemImage
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    inlines = [ItemImageAdmin]
+
+    class Meta:
+        model = Item
+
+@admin.register(ItemImage)
+class ItemImageAdmin(admin.ModelAdmin):
+    pass
