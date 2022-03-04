@@ -72,6 +72,12 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+class ItemImage(models.Model):
+    my_item = models.ForeignKey(Item, default=None, on_delete=models.CASCADE)
+    images = models.FileField(upload_to="other_pics")
+
+    def __str__(self):
+        return self.item.title
 
 
 
