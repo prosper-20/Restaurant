@@ -193,8 +193,17 @@
         <!--Grid column-->
         {% for p in photos %}
         <div class="col-lg-4 col-md-12 mb-4">
-          <img src="{{ p.images.url }}" alt="">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+          <!--Card-->
+          <div class="card">
+
+            <!--Card image-->
+            <div class="view overlay">
+              <img src="{{ p.images.url }}" alt="">
+              <a href="{{ item.get_absolute_url }}">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+          <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt=""> -->
 
         </div>
         {% endfor %}
