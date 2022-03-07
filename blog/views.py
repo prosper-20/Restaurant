@@ -13,3 +13,7 @@ def blog_home(request):
 
 def blog_about(request):
     return render(request, "blog/food-single.html")
+
+
+def blog_category(request):
+    return render(request, "blog/food-category.html")
