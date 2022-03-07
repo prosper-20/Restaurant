@@ -17,3 +17,6 @@ def blog_about(request):
 
 def blog_category(request):
     return render(request, "blog/food-category.html")
+
+def blog_contact(request):
+    return render(request, "blog/food-contact.html")
