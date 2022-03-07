@@ -10,3 +10,6 @@ def blog_home(request):
         "items": items,
     }
     return render(request, "blog/index.html", context)
+
+def blog_about(request):
+    return render(request, "blog/food-single.html")
