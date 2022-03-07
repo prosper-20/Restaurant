@@ -51,7 +51,7 @@
     <div id="wrapper">
         <section id="cta" class="jumbotron text-center">
             <div class="container">
-                <a href="food-index.html"><img src="{% static 'blog/images/version/food-logo.png' %}" alt="" class="img-fluid"></a>
+                <a href="{% url 'home' %}"><img src="{% static 'blog/images/version/food-logo.png' %}" alt="" class="img-fluid"></a>
                 <p>Each year we've hosted the Best Food Blog Awards, we're astounded at the depth, variety, creativity, and ingenuity of the food blogs nominated..</p>
                 <a href="#" class="btn btn-primary">View Recipes</a>
             </div>
@@ -66,22 +66,22 @@
                     <div class="collapse navbar-collapse justify-content-md-center" id="RecipeListmenu">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="food-index.html">Home</a>
+                                <a class="nav-link" href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="food-category.html">Recipes</a>
+                                <a class="nav-link" href="{% url 'food-category' %}">Recipes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="food-category.html"><i class="fa fa-play-circle-o"></i> Video Recipes</a>
+                                <a class="nav-link" href="{% url 'food-category' %}"><i class="fa fa-play-circle-o"></i> Video Recipes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="food-category.html">Restaurants</a>
+                                <a class="nav-link" href="{% url 'food-category' %}">Restaurants</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="food-category.html">Kitchenware</a>
+                                <a class="nav-link" href="{% url 'food-category' %}">Kitchenware</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="food-contact.html">Contact Me</a>
+                                <a class="nav-link" href="{% url 'contact' %}">Contact Me</a>
                             </li>  
                         </ul>
                     </div>
