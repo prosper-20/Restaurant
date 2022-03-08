@@ -93,14 +93,15 @@
         <section class="section lb text-muted">
             <div class="container">
                 <div class="row grid-style">
-                    {% for item in items %}
+                    <!-- {% for item in items %} -->
+                    {% for post in posts %}
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <div class="blog-box">
                             <div class="post-media">
                                 <a href="{% url 'food-single' %}" title="">    
-                                    <span class="detail veg">{{ item.get_category_display }}</span>
+                                    <span class="detail veg">{{ post.get_category_display }}</span>
                                     <!-- <img src="{% static 'blog/upload/blog_square_10.jpg' %}" alt="" class="img-fluid"> -->
-                                    <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                    <img src="{{ post.image.url }}" alt="" class="img-fluid">
                                     <div class="hovereffect"></div>
                                 </a>
                             </div><!-- end media -->
@@ -113,10 +114,11 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <h4><a href="{% url 'food-single' %}" title="">{{ item.title }}</a></h4>
-                                <p>{{ item.description }}</p>
-                                <small><a href="{% url 'food-single' %}" title="">18 July, 2017</a></small>
-                                <small><a href="#" title="">by Matilda</a></small>
+                                <h4><a href="{% url 'food-single' %}" title="">{{ post.title }}</a></h4>
+                                <!-- <p>{{ item.description }}</p> -->
+                                <p>{{ post.content }}</p>
+                                <small><a href="{% url 'food-single' %}" title="">{{ post.date_posted }}</a></small>
+                                <small><a href="#" title="">by {{ post.author}}</a></small>
                             </div><!-- end meta -->
                         </div><!-- end blog-box -->
                     </div><!-- end col -->
