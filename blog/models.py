@@ -19,6 +19,7 @@ class Post(models.Model):
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=3)
     image = models.ImageField()
     slug = models.SlugField()
+    url = models.URLField(default="http://www.youtube.com/embed/cxB4ACaaR4I")
 
 
     def __str__(self):
