@@ -580,7 +580,7 @@ class reservation_view(ListView):
     model = Item
     context_object_name = "items"
     template_name = 'Order/reservation.html'
-    paginate_by = 10
+    paginate_by = 100
 
 def appointment(request):
     if request.method == "POST":
