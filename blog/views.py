@@ -1,6 +1,6 @@
 from typing import List
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from Order.models import Item
 from .models import Post
 
@@ -18,6 +18,11 @@ class HomeView(ListView):
     context_object_name = "posts"
     template_name = "blog/index.html"
     ordering = ["-date_posted"]
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = "blog/food-single.html"
+    
 
 def blog_about(request):
     return render(request, "blog/food-single.html")
