@@ -25,6 +25,6 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("product", kwargs={
+        return reverse("food-single", kwargs={
             'slug': self.slug
         })
