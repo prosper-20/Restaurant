@@ -1,7 +1,9 @@
 from typing import List
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from Order.models import Item
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from Order.models import Item, Comment
+from .forms import CommentForm
 from .models import Post
 
 
@@ -23,6 +25,20 @@ class PostDetailView(DetailView):
     model = Post
     context_object_name = "post"
     template_name = "blog/food-single.html"
+
+class PostCommentView(LoginRequiredMixin, CreateView):
+    model = Comment
+    form_class = CommentForm
+    # success_url = "/"
+    template_name = "blog/post_comment_form.html"
+
+    def form_valid(self, form):
+        form.instance.name = self.request.user
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
     
 
 def blog_about(request):
