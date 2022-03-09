@@ -1,6 +1,6 @@
 from unicodedata import name
 from django.urls import path
-from .views import  HomeView, PostDetailView, blog_about, blog_category, blog_contact, PostC
+from .views import  HomeView, PostDetailView, blog_about, blog_category, blog_contact, PostCommentView
 # blog_home 
 
 
