@@ -2,9 +2,9 @@ from typing import List
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from Order.models import Item, Comment
+from Order.models import Item
 from .forms import CommentForm
-from .models import Post
+from .models import Post, Comment
 
 
 # def blog_home(request):
