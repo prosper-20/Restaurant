@@ -40,6 +40,10 @@
     <!-- Version Food CSS for this template -->
     <link href="{% static 'blog/css/version/food.css' %}" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <script src="https://kit.fontawesome.com/a42d75c02e.js" crossorigin="anonymous"></script>
+
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -286,7 +290,7 @@
                                 <!-- Comment -->
                                 {% if not post.comments.all %}
                                 <!-- <p>No comment yet <a href="{% url 'post_comments' post.pk %}">Add one</a></p> -->
-                                <p>No comment yet <a href="{% url 'post_comments' post.slug %}"><i class="fas fa-comment">Add one</i></a></p>
+                                <p>No comment yet <a href="{% url 'post_comments' post.slug %}"><i class="fas fa-comment" style="color: cadetblue;">Add one</i></a></p>
                                 {% else %}
                                 
                                 <div class="row">
