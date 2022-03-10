@@ -297,11 +297,15 @@
                                                     <img src="{{ comment.name.profile.image.url }}" alt="" class="rounded-circle">
                                                 </a>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading user_name">Amanda Martines <small>5 days ago</small></h4>
-                                                    <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa eiusmod Pinterest in do umami readymade swag. Selfies iPhone Kickstarter, drinking vinegar jean.</p>
+                                                    <h4 class="media-heading user_name">{{ comment.name }}<small>{{ comment.date_added|date:"F d, Y" }}</small></h4>
+                                                    <p>
+                                                        {{ comment.body }}
+                                                      </p>
                                                     <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                                 </div>
                                             </div>
+                                {% endfor %}
+                                {% endif %}
                                             <div class="media">
                                                 <a class="media-left" href="#">
                                                     <img src="{% static 'blog/upload/author_01.jpg' %}" alt="" class="rounded-circle">
