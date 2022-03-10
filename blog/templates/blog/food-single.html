@@ -288,10 +288,11 @@
                                 <!-- <p>No comment yet <a href="{% url 'post_comments' post.pk %}">Add one</a></p> -->
                                 <p>No comment yet <a href="{% url 'post_comments' post.pk %}"><i class="fas fa-comment"></i></a></p>
                                 {% else %}
-                                {% for comment in post.comments.all %}
+                                
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="comments-list">
+                                            {% for comment in post.comments.all %}
                                             <div class="media">
                                                 <a class="media-left" href="#">
                                                     <img src="{{ comment.name.profile.image.url }}" alt="" class="rounded-circle">
@@ -304,8 +305,8 @@
                                                     <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                                 </div>
                                             </div>
-                                {% endfor %}
-                                {% endif %}
+                                            {% endfor %}
+                                            {% endif %}
                                             <div class="media">
                                                 <a class="media-left" href="#">
                                                     <img src="{% static 'blog/upload/author_01.jpg' %}" alt="" class="rounded-circle">
