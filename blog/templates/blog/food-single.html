@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Site Metas -->
-    <title>P's Diner| Blog</title>
+    <title>P's Diner | Blog</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -286,7 +286,7 @@
                                 <!-- Comment -->
                                 {% if not post.comments.all %}
                                 <!-- <p>No comment yet <a href="{% url 'post_comments' post.pk %}">Add one</a></p> -->
-                                <p>No comment yet <a href="{% url 'post_comments' post.pk %}"><i class="fas fa-comment"></i></a></p>
+                                <p>No comment yet <a href="{% url 'post_comments' post.slug %}"><i class="fas fa-comment">Add one</i></a></p>
                                 {% else %}
                                 
                                 <div class="row">
