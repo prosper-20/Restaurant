@@ -35,7 +35,7 @@ class PostCommentView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.name = self.request.user
-        form.instance.post_slug = self.kwargs['slug']
+        form.instance.post.slug = self.kwargs['slug']
         return super().form_valid(form)
 
     def get_success_url(self):
