@@ -6,21 +6,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>P'S Diner</title>
+  <title>P's Diner</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <script src="https://kit.fontawesome.com/a42d75c02e.js" crossorigin="anonymous"></script>
   <!-- Bootstrap core CSS -->
-  <link href="{% static 'Core/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Core/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/css/bootstrap.min.css' %}">
   <!-- Material Design Bootstrap -->
-  <link href="{% static 'Core/css/mdb.min.css' %}" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{% static 'Core/css/mdb.min.css' %}">
   <link rel="stylesheet" href="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/css/mdb.min..css' %}">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'blog/apple-touch-icon.png' %}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'blog/favicon-32x32.png' %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'blog/favicon-16x16.png' %}">
-  <link rel="manifest" href="{% static 'blog/site.webmanifest' %}">
-
+  
   <style type="text/css">
     html,
     body,
@@ -67,11 +64,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#menu" data-offset="100">Menu</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#testimonials" data-offset="100">Opinions</a>
-            </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'item_list' %}" data-offset="100">Order</a>
+              <a class="nav-link" href="#testimonials" data-offset="100">Opinions</a>
             </li>
           </ul>
 
@@ -105,18 +99,18 @@
           <div class="row smooth-scroll">
             <div class="col-md-12 dark-grey-text text-center">
               <div class="wow fadeInDown" data-wow-delay="0.2s">
-                <h2 class="display-3 font-weight-bold mb-2 mt-5 mt-xl-2">P'S Diner</h2>
+                <h2 class="display-3 font-weight-bold mb-2 mt-5 mt-xl-2">P's Diner</h2>
                 <hr class="hr-dark">
                 <h4 class="subtext-header mt-2 mb-3">Eat Right With Us</h4>
                 <h4 class="mb-5 clearfix d-none d-md-inline-block"> Deleniti consequuntur, nihil voluptatem modi nobis veniam.</h4>
               </div>
-              <a class="btn btn-deep-orange btn-rounded wow fadeInUp" href="{% url 'reservation' %}" data-wow-delay="0.2s">
-                <i class="fas fa-calendar-alt mr-2 fa-spin"></i>
+              <a class="btn btn-deep-orange btn-rounded wow fadeInUp" data-wow-delay="0.2s">
+                <i class="far fa-calendar-alt mr-2 fa-spin"></i>
                 <span> Make a reservation</span>
               </a>
-              <a class="btn btn-deep-orange btn-rounded wow fadeInUp" href="{% url 'item_list' %}" data-wow-delay="0.2s">
-                <i style="color: white;" class="fa fa-utensils mr-2 fa-1x fa-spin"></i>
-                <span>Order Now</span>
+              <a class="btn btn-deep-orange btn-rounded wow fadeInUp" href="{% url 'order' %}" data-wow-delay="0.2s">
+                <i class="fas fa-utensils mr-2 fa-spin"></i>
+                <span>Place an Order</span>
               </a>
             </div>
           </div>
@@ -500,7 +494,7 @@
                     <th scope="row">5</th>
                     <td>Apple cake</td>
                     <td>80 g</td>
-                    <td>7 $</td>
+                    <td>6 $</td>
                   </tr>
                 </tbody>
               </table>
@@ -772,13 +766,13 @@
 
           <!--Info-->
           <p>
-            <i class="fas fa-home mr-3"></i>10, Obe Street Ajao Road</p>
+            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
           <p>
-            <i class="fas fa-envelope mr-3"></i>P'sdiner@gmail.com</p>
+            <i class="fas fa-envelope mr-3"></i> info@example.com</p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 234 903 635 6792</p>
+            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
           <p>
-            <i class="fas fa-print mr-3"></i> + 234 803 306 3620</p>
+            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
 
         </div>
         <!--/Second column-->
@@ -823,7 +817,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3 text-center" data-wow-delay="0.3s">
       <div class="container-fluid">
-        © 2022 Copyright: <a href="#" target="_blank"> P'sdiner.com </a>
+        © 2021 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> P's Diner </a>
       </div>
     </div>
     <!--/Copyright-->
@@ -839,7 +833,7 @@
   <script type="text/javascript" src="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/js/jquery-3.4.0.min.js' %}"></script>
 
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Core/js/popper.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'Core/mdbootstrap.com/previews/templates/landing-page/js/popper.min.js' %}"></script>
 
   <!-- Bootstrap core JavaScript -->

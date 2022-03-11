@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from Order.models import Item
 from .forms import CommentForm
 from .models import Post, Comment
+from django.urls import reverse_lazy
 
 
 # def blog_home(request):
@@ -34,11 +35,11 @@ class PostCommentView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.name = self.request.user
-        form.instance.post_id = self.kwargs['pk']
+        form.instance.post_slug = self.kwargs['slug']
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('post_detail', kwargs={'slug': self.kwargs['slug']})
     
 
 def blog_about(request):
