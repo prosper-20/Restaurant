@@ -310,8 +310,11 @@
                                                 </div>
                                             </div>
                                             {% endfor %}
+                                            <a href="{% url 'post_comments' post.pk %}" class="btn btn-primary me-1">
+                                                <i class="fas fa-comments me-2"></i>Add comment
+                                            </a>
                                             {% endif %}
-                                            <div class="media">
+                                            <!-- <div class="media">
                                                 <a class="media-left" href="#">
                                                     <img src="{% static 'blog/upload/author_01.jpg' %}" alt="" class="rounded-circle">
                                                 </a>
@@ -335,7 +338,7 @@
 
                                                     <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div><!-- end col -->
                                 </div><!-- end row -->
