@@ -391,12 +391,13 @@ cite img {
 .packages-section {
 	text-align: center;
 	background-color: #f4f4f4;
+	margin-top: 0;
 }
 
 .packages-heading {
 	color: black;
 	font-size: 250%;
-	margin-top: 100px;
+	margin-top: 70px;
 	margin-bottom: 50px;
     float: right;
     text-align: center;
