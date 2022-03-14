@@ -35,11 +35,14 @@ class PostCommentView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.name = self.request.user
-        form.instance.post_slug = self.kwargs['slug']
+        form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
 
-    def get_success_url(self):
-        return reverse_lazy('post_detail', kwargs={'slug': self.kwargs['slug']})
+    # def get_success_url(self):
+    #     return reverse_lazy('post_detail', kwargs={'slug': self.kwargs['slug']})
+
+    # def get_success_url(self):
+    #     return reverse_lazy('pk', kwargs={'slug': self.kwargs['id']})
     
 
 def blog_about(request):

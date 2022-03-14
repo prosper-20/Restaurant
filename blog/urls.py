@@ -10,7 +10,7 @@ urlpatterns = [
     path("food-single/", blog_about, name="food-single"),
     path("food-category/", blog_category, name="food-category"),
     path("food-contact/", blog_contact, name="contact"),
-    path('post/<slug>/comment/', PostCommentView.as_view(), name="post_comments"),
+    path('post/<int:pk>/comment/', PostCommentView.as_view(), name="post_comments"),
 
     
 ]
