@@ -170,12 +170,7 @@
                     </div><!-- end col -->
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <br>
-                        <div class="copyright">&copy; RecipeList. Design: <a href="http://html.design">HTML Design</a>.</div>
-                    </div>
-                </div>
+                
             </div><!-- end container -->
         </footer><!-- end footer -->
 
@@ -185,13 +180,14 @@
 
     <!-- Core JavaScript
     ================================================== -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/tether.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/js/tether.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/custom.js' %}"></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAkADq7R0xf6ami9YirAM1N-yl7hdnYBhM "></script>
    <!-- MAP & CONTACT -->
-    <script src="js/food-map.js"></script>
+    <script src="{% static 'blog/js/food-map.js' %}"></script>
 
 </body>
 </html>
