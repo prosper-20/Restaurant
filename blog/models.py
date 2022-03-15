@@ -18,17 +18,16 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=3)
     image = models.ImageField()
-    slug = models.SlugField()
     url = models.URLField(default="http://www.youtube.com/embed/cxB4ACaaR4I")
 
 
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse("post_detail", kwargs={
-            'slug': self.slug
-        })
+    # def get_absolute_url(self):
+    #     return reverse("post_detail", kwargs={
+    #         'slug': self.slug
+    #     })
 
 
 class Comment(models.Model):

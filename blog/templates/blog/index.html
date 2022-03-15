@@ -97,7 +97,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <div class="blog-box">
                             <div class="post-media">
-                                <a href="{{ post.get_absolute_url }}" title="">    
+                                <a href="{% url 'post_detail' post.pk %}" title="">    
                                     <span class="detail veg">{{ post.get_category_display }}</span>
                                     <!-- <img src="{% static 'blog/upload/blog_square_10.jpg' %}" alt="" class="img-fluid"> -->
                                     <img src="{{ post.image.url }}" alt="" class="img-fluid">
@@ -113,7 +113,7 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <h4><a href="{{ post.get_absolute_url }}" title="">{{ post.title }}</a></h4>
+                                <h4><a href="{% url 'post_detail' post.pk %}" title="">{{ post.title }}</a></h4>
                                 <!-- <p>{{ item.description }}</p> -->
                                 <p>{{ post.content|truncatechars:50 }}</p>
                                 <small><a href="{% url 'food-single' %}" title="">{{ post.date_posted }}</a></small>
