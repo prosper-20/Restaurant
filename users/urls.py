@@ -6,5 +6,5 @@ from users.views import register
 
 
 urlpatterns = [
-    path('', users_views.register, name='register'),
+    path('', users_views.register1, name='register'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

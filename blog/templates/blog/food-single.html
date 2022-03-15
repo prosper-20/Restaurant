@@ -290,7 +290,7 @@
                                 <!-- Comment -->
                                 {% if not post.comments.all %}
                                 <!-- <p>No comment yet <a href="{% url 'post_comments' post.pk %}">Add one</a></p> -->
-                                <p>No comment yet <a href="{% url 'post_comments' post.slug %}"><i class="fas fa-comment" style="color: cadetblue;">Add one</i></a></p>
+                                <p>No comment yet <a href="{% url 'post_comments' post.pk %}"><i class="fas fa-comment" style="color: cadetblue;">Add one</i></a></p>
                                 {% else %}
                                 
                                 <div class="row">
