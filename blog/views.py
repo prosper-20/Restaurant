@@ -1,7 +1,7 @@
 from typing import List
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from Order.models import Item
 from .forms import CommentForm
 from .models import Post, Comment
@@ -26,6 +26,41 @@ class PostDetailView(DetailView):
     model = Post
     context_object_name = "post"
     template_name = "blog/food-single.html"
+
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    fields = ["title", "content"]
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+    def test_func(self):
+        post = self.get_object()
+        if post.author == self.request.user:
+            return True
+        return False
+
+    fields = ["title", "content"]
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    success_url = "/"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 class PostCommentView(LoginRequiredMixin, CreateView):
     model = Comment
