@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'django_countries',
     'stripe',
+    'ckeditor',
 ]
 
 ACCOUNT_ADAPTER = 'restaurant.account_adapter.NoNewUsersAccountAdapter'
