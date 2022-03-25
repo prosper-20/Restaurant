@@ -15,7 +15,7 @@ import stripe
 from django.conf import settings
 import random
 import string 
-from sendgrid import SendGridAPIClient
+# from sendgrid import SendGridAPIClient
 from django.contrib.auth.models import User
 
 from django.template.loader import render_to_string
